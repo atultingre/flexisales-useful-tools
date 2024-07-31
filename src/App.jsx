@@ -1,10 +1,11 @@
+import Dashboard from "./components/Dashboard/Dashboard";
 import Select from "./components/Select/Select";
 
 const App = () => {
   return (
-    <div>
+    <Dashboard>
       <Select />
-    </div>
+    </Dashboard>
   );
 };
 

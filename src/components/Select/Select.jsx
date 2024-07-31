@@ -1,3 +1,4 @@
+import { Button, notification } from "antd";
 import { useState } from "react";
 
 const Select = () => {
@@ -16,22 +17,37 @@ const Select = () => {
           .split(/[\n,]+/)
           .map((option) => option.trim())
           .filter((option) => option);
-  
+
         return `
   <p>${config.question}</p>
-  <select name="cq${index + 1}[]" id="cq${index + 1}"${config.isMultiple ? ' multiple="multiple"' : ""}>
+  <select name="cq${index + 1}[]" id="cq${index + 1}"${
+          config.isMultiple ? ' multiple="multiple"' : ""
+        }>
     ${optionsArray
       .map((option) => `<option value="${option}">${option}</option>`)
       .join("\n  ")}
   </select>`;
       })
       .join("\n\n");
-  
+
     setGeneratedCode(allSelectsHtml);
   };
-  
+
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(generatedCode);
+    navigator.clipboard
+      .writeText(generatedCode)
+      .then(() => {
+        notification.success({
+          message: "Copied to Clipboard",
+          description: "The generated code has been copied to your clipboard.",
+        });
+      })
+      .catch((err) => {
+        notification.error({
+          message: "Copy Failed",
+          description: "Failed to copy the code. Please try again.",
+        });
+      });
   };
 
   const handleConfigChange = (index, key, value) => {
@@ -58,20 +74,16 @@ const Select = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold">Generate CQ questions code</h2>
-      <div className="flex w-full justify-end m-3">
-        <button
-          onClick={handleAddSelect}
-          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700 flex items-center justify-center"
-        >
-          Add select +
-        </button>
-        <button
-          onClick={handleClear}
-          className="p-2 bg-red-500 text-white rounded hover:bg-red-700 ml-4 flex items-center justify-center"
-        >
-          Clear all
-        </button>
+      <div className="flex w-full justify-between items-center mb-10">
+        <h2 className="text-2xl font-semibold">Generate CQ Questions Code</h2>
+        <div className="flex">
+          <Button type="primary" onClick={handleAddSelect}>
+            Add Select +
+          </Button>
+          <Button type="priamry" onClick={handleClear} className="ml-4">
+            Clear All
+          </Button>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {selectConfigs.map((config, index) => (
@@ -116,18 +128,23 @@ const Select = () => {
           readOnly
           className="p-2 border border-gray-300 rounded min-h-20"
         ></textarea>
-        <button
-          onClick={handleGenerateCode}
-          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          Generate code
-        </button>
-        <button
-          onClick={handleCopyToClipboard}
-          className="p-2 bg-green-500 text-white rounded hover:bg-green-700"
-        >
-          Copy to clipboard
-        </button>
+        <div className="flex w-full gap-5">
+          <Button
+            type="primary"
+            onClick={handleGenerateCode}
+            className="p-2 w-full"
+          >
+            Generate Code
+          </Button>
+          <Button
+            type="primary"
+            danger
+            onClick={handleCopyToClipboard}
+            className="p-2 w-full"
+          >
+            Copy to Clipboard
+          </Button>
+        </div>
       </div>
     </div>
   );
