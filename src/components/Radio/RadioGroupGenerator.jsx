@@ -1,6 +1,5 @@
-import { Button, Input,  notification } from "antd";
+import { Button, Input, notification } from "antd";
 import { useState } from "react";
-import { Radio } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 const RadioGroupGenerator = () => {
@@ -22,14 +21,14 @@ const RadioGroupGenerator = () => {
 
         return `
   <p>
-    <p>${config.question}</p>
+    <strong>${config.question}</strong>
     ${optionsArray
       .map(
-        (option) => `
-      <input type="radio" name="optin${
-        index + 1
-      }" value="${option}" id="${option}">
-      ${option}
+        (option, idx) => `
+      <input type="radio" name="optin${index + 1}" value="${option}" id="${
+          option + idx
+        }">
+      <label for="${option + idx}">${option}</label>
       &nbsp;
     `
       )
@@ -115,31 +114,41 @@ const RadioGroupGenerator = () => {
           </div>
         ))}
       </div>
-      <div className="mt-4 flex flex-col space-y-2">
-        <TextArea
-          rows={6}
-          placeholder="Display generated code here"
-          value={generatedCode}
-          readOnly
-          className="p-2 border border-gray-300 rounded"
-        />
-        <div className="flex w-full gap-5">
-          <Button
-            type="primary"
-            onClick={handleGenerateCode}
-            className="p-2 w-full"
-          >
-            Generate Code
-          </Button>
-          <Button
-            type="primary"
-            danger
-            onClick={handleCopyToClipboard}
-            className="p-2 w-full"
-          >
-            Copy to Clipboard
-          </Button>
+      <div className="flex mt-4 justify-between space-y-2 gap-5">
+        <div className="w-full">
+          <h3 className="text-xl font-semibold mb-2">Generated code</h3>
+          <TextArea
+            rows={6}
+            placeholder="Display generated code here"
+            value={generatedCode}
+            readOnly
+            className="p-2 border border-gray-300 rounded"
+          />
         </div>
+        <div className="w-full">
+          <h3 className="text-xl font-semibold mb-2">Preview</h3>
+          <div
+            className="preview-container p-2 border border-gray-300 rounded"
+            dangerouslySetInnerHTML={{ __html: generatedCode }}
+          />
+        </div>
+      </div>
+      <div className="flex w-full mt-5 gap-5">
+        <Button
+          type="primary"
+          onClick={handleGenerateCode}
+          className="p-2 w-full"
+        >
+          Generate Code
+        </Button>
+        <Button
+          type="primary"
+          danger
+          onClick={handleCopyToClipboard}
+          className="p-2 w-full"
+        >
+          Copy to Clipboard
+        </Button>
       </div>
     </div>
   );

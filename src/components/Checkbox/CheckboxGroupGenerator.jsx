@@ -1,4 +1,4 @@
-import { Button, Input,  notification } from "antd";
+import { Button, Input, notification } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 
@@ -19,7 +19,9 @@ const CheckboxGroupGenerator = () => {
 
         return `
   <p>
-    <input id="optin${index + 1}" name="optin${index + 1}" type="checkbox" value="by email"
+    <input id="optin${index + 1}" name="optin${
+          index + 1
+        }" type="checkbox" value="by email"
       style="height: 15px; margin-bottom:0;" required="Required">
     &nbsp;${config.text} ${linkPart}
   </p>`;
@@ -30,17 +32,20 @@ const CheckboxGroupGenerator = () => {
   };
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(generatedCode).then(() => {
-      notification.success({
-        message: "Copied to Clipboard",
-        description: "The generated code has been copied to your clipboard.",
+    navigator.clipboard
+      .writeText(generatedCode)
+      .then(() => {
+        notification.success({
+          message: "Copied to Clipboard",
+          description: "The generated code has been copied to your clipboard.",
+        });
+      })
+      .catch(() => {
+        notification.error({
+          message: "Copy Failed",
+          description: "Failed to copy the code. Please try again.",
+        });
       });
-    }).catch(() => {
-      notification.error({
-        message: "Copy Failed",
-        description: "Failed to copy the code. Please try again.",
-      });
-    });
   };
 
   const handleConfigChange = (index, key, value) => {
@@ -69,17 +74,10 @@ const CheckboxGroupGenerator = () => {
       <div className="flex w-full justify-between items-center mb-10">
         <h2 className="text-2xl font-semibold">Generate Checkbox Code</h2>
         <div className="flex">
-          <Button
-            type="primary"
-            onClick={handleAddCheckbox}
-            className="mr-4"
-          >
+          <Button type="primary" onClick={handleAddCheckbox} className="mr-4">
             Add Checkbox +
           </Button>
-          <Button
-            type="dashed" danger
-            onClick={handleClear}
-          >
+          <Button type="dashed" danger onClick={handleClear}>
             Clear All
           </Button>
         </div>
@@ -112,13 +110,26 @@ const CheckboxGroupGenerator = () => {
         ))}
       </div>
       <div className="mt-4 flex flex-col space-y-2">
-        <TextArea
-          rows={7}
-          placeholder="Display generated code here"
-          value={generatedCode}
-          readOnly
-          className="p-2 border border-gray-300 rounded"
-        />
+        <div className="flex justify-between gap-5">
+          <div className="w-full">
+            <h3 className="text-xl font-semibold mb-2">Generated code</h3>
+            <TextArea
+              rows={7}
+              cols={65}
+              placeholder="Display generated code here"
+              value={generatedCode}
+              readOnly
+              className="p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="mt-4 w-full">
+            <h3 className="text-xl font-semibold mb-2">Preview</h3>
+            <div
+              className=" preview-container p-2 border border-gray-300 rounded"
+              dangerouslySetInnerHTML={{ __html: generatedCode }}
+            />
+          </div>
+        </div>
         <div className="flex w-full gap-5">
           <Button
             type="primary"

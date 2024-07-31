@@ -1,4 +1,4 @@
-import { Button, notification } from "antd";
+import { Button, Input, notification } from "antd";
 import { useState } from "react";
 
 const Select = () => {
@@ -42,7 +42,7 @@ const Select = () => {
           description: "The generated code has been copied to your clipboard.",
         });
       })
-      .catch((err) => {
+      .catch(() => {
         notification.error({
           message: "Copy Failed",
           description: "Failed to copy the code. Please try again.",
@@ -88,7 +88,7 @@ const Select = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {selectConfigs.map((config, index) => (
           <div key={index} className="flex flex-col space-y-2">
-            <input
+            <Input
               type="text"
               placeholder={`Add select question ${index + 1}`}
               value={config.question}
@@ -97,7 +97,7 @@ const Select = () => {
               }
               className="p-2 border border-gray-300 rounded"
             />
-            <textarea
+            <Input.TextArea
               placeholder={`Add select options ${
                 index + 1
               } (newline-separated)`}
@@ -105,9 +105,9 @@ const Select = () => {
               onChange={(e) =>
                 handleConfigChange(index, "options", e.target.value)
               }
-              rows={10}
+              rows={5}
               className="p-2 border border-gray-300 rounded h-20"
-            ></textarea>
+            />
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
@@ -121,15 +121,27 @@ const Select = () => {
           </div>
         ))}
       </div>
-      <div className="mt-4 flex flex-col space-y-2">
-        <textarea
-          rows={5}
-          placeholder="Display generated code here"
-          value={generatedCode}
-          readOnly
-          className="p-2 border border-gray-300 rounded min-h-20"
-        ></textarea>
-        <div className="flex w-full gap-5">
+      <div className="mt-4 flex justify-between gap-5 space-y-2">
+        <div className="w-full">
+        <h3 className="text-xl font-semibold mb-2">Generated code</h3>
+
+          <Input.TextArea
+            rows={5}
+            placeholder="Display generated code here"
+            value={generatedCode}
+            readOnly
+            className="p-2 border border-gray-300 rounded min-h-20"
+          />
+        </div>
+        <div className="w-full">
+          <h3 className="text-xl font-semibold mb-2">Preview</h3>
+          <div
+            className="preview-container p-4 border border-gray-300 rounded"
+            dangerouslySetInnerHTML={{ __html: generatedCode }}
+          />
+        </div>
+      </div>
+        <div className="flex w-full gap-5 mt-3" >
           <Button
             type="primary"
             onClick={handleGenerateCode}
@@ -146,7 +158,6 @@ const Select = () => {
             Copy to Clipboard
           </Button>
         </div>
-      </div>
     </div>
   );
 };

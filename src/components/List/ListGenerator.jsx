@@ -79,7 +79,7 @@ ${filteredContent
         <Radio value="ul">Unordered List</Radio>
       </Radio.Group>
       <Input.TextArea
-        rows={10}
+        rows={5}
         placeholder="Paste your content here"
         value={content}
         onChange={(e) => setContent(e.target.value)}
@@ -100,7 +100,7 @@ ${filteredContent
         <div className="w-1/2 pl-2">
           <h3 className="text-lg font-semibold mb-2">Generated Code</h3>
           <Input.TextArea
-            rows={10}
+            rows={6}
             placeholder="Generated HTML code will appear here"
             value={generatedCode}
             readOnly
