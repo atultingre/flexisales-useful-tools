@@ -16,25 +16,20 @@ const Select = () => {
           .split(/[\n,]+/)
           .map((option) => option.trim())
           .filter((option) => option);
+  
         return `
-<p>${config.question}</p>
-<select name="cq${index + 1}[]" id="cq${
-          index + 1
-        }" class="form-control rounded-full border border-gray-300 p-2" required="required"${
-          config.isMultiple ? ' multiple="multiple"' : ""
-        }>
-  <option value="">${optionsArray[0]}</option>
-  ${optionsArray
-    .slice(1)
-    .map((option) => `<option value="${option}">${option}</option>`)
-    .join("\n  ")}
-</select>`;
+  <p>${config.question}</p>
+  <select name="cq${index + 1}[]" id="cq${index + 1}"${config.isMultiple ? ' multiple="multiple"' : ""}>
+    ${optionsArray
+      .map((option) => `<option value="${option}">${option}</option>`)
+      .join("\n  ")}
+  </select>`;
       })
       .join("\n\n");
-
+  
     setGeneratedCode(allSelectsHtml);
   };
-
+  
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(generatedCode);
   };
@@ -52,6 +47,15 @@ const Select = () => {
     ]);
   };
 
+  const handleClear = () => {
+    setSelectConfigs([
+      { question: "", options: "", isMultiple: true },
+      { question: "", options: "", isMultiple: true },
+      { question: "", options: "", isMultiple: true },
+    ]);
+    setGeneratedCode("");
+  };
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold">Generate CQ questions code</h2>
@@ -61,6 +65,12 @@ const Select = () => {
           className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700 flex items-center justify-center"
         >
           Add select +
+        </button>
+        <button
+          onClick={handleClear}
+          className="p-2 bg-red-500 text-white rounded hover:bg-red-700 ml-4 flex items-center justify-center"
+        >
+          Clear all
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
