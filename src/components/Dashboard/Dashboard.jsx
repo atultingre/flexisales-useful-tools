@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import {
+  CheckOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
+import { MdOutlineRadioButtonChecked } from "react-icons/md";
 import { Button, Layout, Menu, theme } from "antd";
+import { FaLink, FaQuestion } from "react-icons/fa";
 
 const { Header, Sider, Content } = Layout;
 
 const Dashboard = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -22,32 +25,52 @@ const Dashboard = ({ children }) => {
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible className="h-dvh" collapsed={collapsed}>
+      <Sider
+        trigger={null}
+        collapsible
+        className="h-dvh"
+        collapsed={collapsed}
+        style={{
+          overflow: "auto",
+          height: "100d vh",
+          position: "fixed",
+          zIndex: 1,
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+      >
         <div className="my-5 flex justify-center items-center">
           <h1 className="text-xl text-white">
             {!collapsed ? "Flexisales useful tools" : "Flexi"}
           </h1>
         </div>
         <Menu theme="dark" mode="inline" selectedKeys={[currentPath]}>
-          <Menu.Item key="/" icon={<UserOutlined />}>
+          <Menu.Item key="/" icon={<FaQuestion />}>
             <Link to="/">CQ Questions</Link>
           </Menu.Item>
-          <Menu.Item key="/radio" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="/radio" icon={<MdOutlineRadioButtonChecked />}>
             <Link to="/radio">Radio</Link>
           </Menu.Item>
-          <Menu.Item key="/checkbox" icon={<UploadOutlined />}>
+          <Menu.Item key="/checkbox" icon={<CheckOutlined />}>
             <Link to="/checkbox">Checkbox</Link>
           </Menu.Item>
-          <Menu.Item key="/link-opener" icon={<UploadOutlined />}>
+          {/* <Menu.Item key="/link-opener" icon={<FaLink />}>
             <Link to="/link-opener">Link opener</Link>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
-      <Layout>
+      <Layout style={{ marginLeft: collapsed ? 80 : 200 }}>
         <Header
           style={{
             padding: 0,
             background: colorBgContainer,
+            position: "fixed",
+            zIndex: 1,
+            width: "100vw",
+            left: 0,
+            top: 0,
+            marginLeft: collapsed ? 80 : 200,
           }}
         >
           <Button
@@ -63,9 +86,9 @@ const Dashboard = ({ children }) => {
         </Header>
         <Content
           style={{
-            margin: "24px 16px",
+            margin: "90px 16px 18px 16px",
+            minHeight: "82dvh",
             padding: 24,
-            minHeight: 280,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}
