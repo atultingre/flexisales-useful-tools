@@ -97,7 +97,7 @@ ${filteredContent
         </Button>
       </div>
       <div className="flex space-x-4">
-        <div className="w-1/2 pl-2">
+        <div className="w-full pl-2">
           <h3 className="text-lg font-semibold mb-2">Generated Code</h3>
           <Input.TextArea
             rows={6}
@@ -107,13 +107,15 @@ ${filteredContent
             className="p-2 border border-gray-300 rounded"
           />
         </div>
-        <div className="w-1/2 pr-2">
-          <h3 className="text-lg font-semibold mb-2">Preview</h3>
-          <div
-            className="p-2 border border-gray-300 rounded"
-            dangerouslySetInnerHTML={{ __html: previewHtml }}
-          />
-        </div>
+        {generatedCode && (
+          <div className="w-full pr-2">
+            <h3 className="text-lg font-semibold mb-2">Preview</h3>
+            <div
+              className="p-2 border border-gray-300 rounded"
+              dangerouslySetInnerHTML={{ __html: previewHtml }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -20,11 +20,11 @@ const Select = () => {
 
         return `
   <p>${config.question}</p>
-  <select name="cq${index + 1}[]" id="cq${index + 1}"${
-          config.isMultiple ? ' multiple="multiple"' : ""
-        }>
+  <select name="cq${
+    index + 1
+  }[]" id="cq${index + 1}" class="form-control" style="overflow:auto;" required ${config.isMultiple ? " multiple" : ""}>
     ${optionsArray
-      .map((option) => `<option value="${option}">${option}</option>`)
+      .map((option) => `<option value="${option}" title="${option}">${option}</option>`)
       .join("\n  ")}
   </select>`;
       })
@@ -123,7 +123,7 @@ const Select = () => {
       </div>
       <div className="mt-4 flex justify-between gap-5 space-y-2">
         <div className="w-full">
-        <h3 className="text-xl font-semibold mb-2">Generated code</h3>
+          <h3 className="text-xl font-semibold mb-2">Generated code</h3>
 
           <Input.TextArea
             rows={5}
@@ -133,31 +133,33 @@ const Select = () => {
             className="p-2 border border-gray-300 rounded min-h-20"
           />
         </div>
-        <div className="w-full">
-          <h3 className="text-xl font-semibold mb-2">Preview</h3>
-          <div
-            className="preview-container p-4 border border-gray-300 rounded"
-            dangerouslySetInnerHTML={{ __html: generatedCode }}
-          />
-        </div>
+        {generatedCode && (
+          <div className="w-full">
+            <h3 className="text-xl font-semibold mb-2">Preview</h3>
+            <div
+              className="preview-container p-4 border border-gray-300 rounded"
+              dangerouslySetInnerHTML={{ __html: generatedCode }}
+            />
+          </div>
+        )}
       </div>
-        <div className="flex w-full gap-5 mt-3" >
-          <Button
-            type="primary"
-            onClick={handleGenerateCode}
-            className="p-2 w-full"
-          >
-            Generate Code
-          </Button>
-          <Button
-            type="primary"
-            danger
-            onClick={handleCopyToClipboard}
-            className="p-2 w-full"
-          >
-            Copy to Clipboard
-          </Button>
-        </div>
+      <div className="flex w-full gap-5 mt-3">
+        <Button
+          type="primary"
+          onClick={handleGenerateCode}
+          className="p-2 w-full"
+        >
+          Generate Code
+        </Button>
+        <Button
+          type="primary"
+          danger
+          onClick={handleCopyToClipboard}
+          className="p-2 w-full"
+        >
+          Copy to Clipboard
+        </Button>
+      </div>
     </div>
   );
 };

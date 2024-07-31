@@ -20,20 +20,17 @@ const RadioGroupGenerator = () => {
           .filter((option) => option);
 
         return `
-  <p>
-    <strong>${config.question}</strong>
+  <p>${config.question}</p>
     ${optionsArray
       .map(
         (option, idx) => `
-      <input type="radio" name="optin${index + 1}" value="${option}" id="${
-          option + idx
-        }">
-      <label for="${option + idx}">${option}</label>
-      &nbsp;
+      <input type="radio" name="optin${
+        index + 1
+      }" value="${option}">  ${option} 
     `
       )
       .join("\n    ")}
-  </p>`;
+  `;
       })
       .join("\n\n");
 
@@ -125,13 +122,15 @@ const RadioGroupGenerator = () => {
             className="p-2 border border-gray-300 rounded"
           />
         </div>
-        <div className="w-full">
-          <h3 className="text-xl font-semibold mb-2">Preview</h3>
-          <div
-            className="preview-container p-2 border border-gray-300 rounded"
-            dangerouslySetInnerHTML={{ __html: generatedCode }}
-          />
-        </div>
+        {generatedCode && (
+          <div className="w-full">
+            <h3 className="text-xl font-semibold mb-2">Preview</h3>
+            <div
+              className="preview-container p-2 border border-gray-300 rounded"
+              dangerouslySetInnerHTML={{ __html: generatedCode }}
+            />
+          </div>
+        )}
       </div>
       <div className="flex w-full mt-5 gap-5">
         <Button

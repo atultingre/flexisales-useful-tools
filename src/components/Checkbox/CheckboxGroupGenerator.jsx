@@ -19,11 +19,9 @@ const CheckboxGroupGenerator = () => {
 
         return `
   <p>
-    <input id="optin${index + 1}" name="optin${
-          index + 1
-        }" type="checkbox" value="by email"
-      style="height: 15px; margin-bottom:0;" required="Required">
-    &nbsp;${config.text} ${linkPart}
+    <input name="optin${index + 1}" type="checkbox" value="${config.text}"
+      >
+    ${config.text} ${linkPart}
   </p>`;
       })
       .join("\n\n");
@@ -93,14 +91,14 @@ const CheckboxGroupGenerator = () => {
               }
             />
             <Input
-              placeholder={`Enter link text (optional) ${index + 1}`}
+              placeholder={`Enter link text ${index + 1}`}
               value={config.linkText}
               onChange={(e) =>
                 handleConfigChange(index, "linkText", e.target.value)
               }
             />
             <Input
-              placeholder={`Enter link URL (optional) ${index + 1}`}
+              placeholder={`Enter link URL ${index + 1}`}
               value={config.linkHref}
               onChange={(e) =>
                 handleConfigChange(index, "linkHref", e.target.value)
@@ -122,13 +120,15 @@ const CheckboxGroupGenerator = () => {
               className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <div className="mt-4 w-full">
-            <h3 className="text-xl font-semibold mb-2">Preview</h3>
-            <div
-              className=" preview-container p-2 border border-gray-300 rounded"
-              dangerouslySetInnerHTML={{ __html: generatedCode }}
-            />
-          </div>
+          {generatedCode && (
+            <div className="w-full">
+              <h3 className="text-xl font-semibold mb-2">Preview</h3>
+              <div
+                className=" preview-container p-2 border border-gray-300 rounded"
+                dangerouslySetInnerHTML={{ __html: generatedCode }}
+              />
+            </div>
+          )}
         </div>
         <div className="flex w-full gap-5">
           <Button
