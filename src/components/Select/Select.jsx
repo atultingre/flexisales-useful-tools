@@ -105,6 +105,7 @@ const Select = () => {
               onChange={(e) =>
                 handleConfigChange(index, "options", e.target.value)
               }
+              rows={10}
               className="p-2 border border-gray-300 rounded h-20"
             ></textarea>
             <label className="flex items-center space-x-2">
@@ -122,7 +123,7 @@ const Select = () => {
       </div>
       <div className="mt-4 flex flex-col space-y-2">
         <textarea
-          rows={16}
+          rows={5}
           placeholder="Display generated code here"
           value={generatedCode}
           readOnly

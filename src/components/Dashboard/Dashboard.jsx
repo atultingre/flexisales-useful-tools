@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import { MdOutlineRadioButtonChecked } from "react-icons/md";
 import { Button, Layout, Menu, theme } from "antd";
-import { FaLink, FaQuestion } from "react-icons/fa";
+import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
 
 const { Header, Sider, Content } = Layout;
 
@@ -54,6 +54,9 @@ const Dashboard = ({ children }) => {
           </Menu.Item>
           <Menu.Item key="/checkbox" icon={<CheckOutlined />}>
             <Link to="/checkbox">Checkbox</Link>
+          </Menu.Item>
+          <Menu.Item key="/List" icon={<FaListUl />}>
+            <Link to="/List">List</Link>
           </Menu.Item>
           {/* <Menu.Item key="/link-opener" icon={<FaLink />}>
             <Link to="/link-opener">Link opener</Link>
