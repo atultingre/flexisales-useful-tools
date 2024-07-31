@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, NavLink } from "react-router-dom";
 import {
   CheckOutlined,
   MenuFoldOutlined,
@@ -11,6 +11,7 @@ import {
 import { MdOutlineRadioButtonChecked } from "react-icons/md";
 import { Button, Layout, Menu, theme } from "antd";
 import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
+import { ImGit } from "react-icons/im";
 
 const { Header, Sider, Content } = Layout;
 
@@ -42,12 +43,15 @@ const Dashboard = ({ children }) => {
       >
         <div className="my-5 flex justify-center items-center">
           <h1 className="text-xl text-white">
-            {!collapsed ? "Flexisales useful tools" : "Flexi"}
+            {!collapsed ? "Flexisales Tools" : "Flexi"}
           </h1>
         </div>
         <Menu theme="dark" mode="inline" selectedKeys={[currentPath]}>
           <Menu.Item key="/" icon={<FaQuestion />}>
             <Link to="/">CQ Questions</Link>
+          </Menu.Item>
+          <Menu.Item key="/List" icon={<FaListUl />}>
+            <Link to="/List">List</Link>
           </Menu.Item>
           <Menu.Item key="/radio" icon={<MdOutlineRadioButtonChecked />}>
             <Link to="/radio">Radio</Link>
@@ -55,13 +59,39 @@ const Dashboard = ({ children }) => {
           <Menu.Item key="/checkbox" icon={<CheckOutlined />}>
             <Link to="/checkbox">Checkbox</Link>
           </Menu.Item>
-          <Menu.Item key="/List" icon={<FaListUl />}>
-            <Link to="/List">List</Link>
-          </Menu.Item>
           {/* <Menu.Item key="/link-opener" icon={<FaLink />}>
             <Link to="/link-opener">Link opener</Link>
           </Menu.Item> */}
         </Menu>
+        <NavLink to="https://atultingre.vercel.app" target="_blanck">
+          <div className="fixed bottom-0 text-white flex items-center ml-3 justify-center gap-3 mb-5">
+            {!collapsed ? (
+              <>
+                <div>
+                  <img
+                    src="./AtulSquare.jpg"
+                    alt="logo"
+                    width={50}
+                    className="rounded-full "
+                  />
+                </div>
+                <div>
+                  <h1 className="font-semibold text-md">Atul Tingre</h1>
+                  <span className="text-[gold] hover:text-[orange]">Software Engineer</span>
+                </div>
+              </>
+            ) : (
+              <div>
+                <img
+                  src="./Atul.jpg"
+                  alt="logo"
+                  width={50}
+                  className="rounded-full "
+                />
+              </div>
+            )}
+          </div>
+        </NavLink>
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 80 : 200 }}>
         <Header

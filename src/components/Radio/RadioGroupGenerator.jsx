@@ -87,7 +87,7 @@ const RadioGroupGenerator = () => {
           <Button type="primary" onClick={handleAddRadioGroup} className="mr-4">
             Add Radio Group +
           </Button>
-          <Button type="danger" onClick={handleClear}>
+          <Button type="dashed" danger onClick={handleClear}>
             Clear All
           </Button>
         </div>
@@ -117,7 +117,7 @@ const RadioGroupGenerator = () => {
       </div>
       <div className="mt-4 flex flex-col space-y-2">
         <TextArea
-          rows={16}
+          rows={6}
           placeholder="Display generated code here"
           value={generatedCode}
           readOnly

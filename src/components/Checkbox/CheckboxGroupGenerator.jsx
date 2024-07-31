@@ -77,7 +77,7 @@ const CheckboxGroupGenerator = () => {
             Add Checkbox +
           </Button>
           <Button
-            type="danger"
+            type="dashed" danger
             onClick={handleClear}
           >
             Clear All
@@ -113,7 +113,7 @@ const CheckboxGroupGenerator = () => {
       </div>
       <div className="mt-4 flex flex-col space-y-2">
         <TextArea
-          rows={16}
+          rows={7}
           placeholder="Display generated code here"
           value={generatedCode}
           readOnly

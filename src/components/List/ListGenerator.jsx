@@ -92,7 +92,7 @@ ${filteredContent
         <Button type="primary" onClick={handleCopyToClipboard}>
           Copy to Clipboard
         </Button>
-        <Button type="danger" onClick={handleClear}>
+        <Button type="dashed" danger onClick={handleClear}>
           Clear All
         </Button>
       </div>

@@ -80,7 +80,7 @@ const Select = () => {
           <Button type="primary" onClick={handleAddSelect}>
             Add Select +
           </Button>
-          <Button type="priamry" onClick={handleClear} className="ml-4">
+          <Button type="dashed" danger onClick={handleClear} className="ml-4">
             Clear All
           </Button>
         </div>
