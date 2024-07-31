@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input,
+textarea,
+button {
+  border: 1px solid black;
+}
