@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -7,6 +8,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
+
 const { Header, Sider, Content } = Layout;
 
 const Dashboard = ({ children }) => {
@@ -14,34 +16,32 @@ const Dashboard = ({ children }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible className="h-dvh" collapsed={collapsed}>
         <div className="my-5 flex justify-center items-center">
-          <h1 className="text-xl text-white">{!collapsed?"Flexisales useful tools":"Flexi"}</h1>
+          <h1 className="text-xl text-white">
+            {!collapsed ? "Flexisales useful tools" : "Flexi"}
+          </h1>
         </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <UserOutlined />,
-              label: "CQ Questions",
-            },
-            {
-              key: "2",
-              icon: <VideoCameraOutlined />,
-              label: "Radio",
-            },
-            {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "Checkbox",
-            },
-          ]}
-        />
+        <Menu theme="dark" mode="inline" selectedKeys={[currentPath]}>
+          <Menu.Item key="/" icon={<UserOutlined />}>
+            <Link to="/">CQ Questions</Link>
+          </Menu.Item>
+          <Menu.Item key="/radio" icon={<VideoCameraOutlined />}>
+            <Link to="/radio">Radio</Link>
+          </Menu.Item>
+          <Menu.Item key="/checkbox" icon={<UploadOutlined />}>
+            <Link to="/checkbox">Checkbox</Link>
+          </Menu.Item>
+          <Menu.Item key="/link-opener" icon={<UploadOutlined />}>
+            <Link to="/link-opener">Link opener</Link>
+          </Menu.Item>
+        </Menu>
       </Sider>
       <Layout>
         <Header
@@ -76,4 +76,5 @@ const Dashboard = ({ children }) => {
     </Layout>
   );
 };
+
 export default Dashboard;
