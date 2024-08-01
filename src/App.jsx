@@ -4,7 +4,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import RadioGroupGenerator from "./components/Radio/RadioGroupGenerator";
 import Select from "./components/Select/Select";
 import ListGenerator from "./components/List/ListGenerator";
-// import BulkLinkOpener from "./components/LinkOpener/BulkLinkOpener";
+// import HtmlGeneratorForm from "./components/Template/HtmlGeneratorForm";
 
 const App = () => {
   return (
@@ -16,6 +16,7 @@ const App = () => {
         <Route path="/list" element={<ListGenerator />} />
         {/* <Route path="/link-opener" element={<BulkLinkOpener />} /> */}
       </Routes>
+      {/* <HtmlGeneratorForm /> */}
     </Dashboard>
   );
 };

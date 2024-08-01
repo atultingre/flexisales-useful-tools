@@ -4,14 +4,10 @@ import {
   CheckOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { MdOutlineRadioButtonChecked } from "react-icons/md";
 import { Button, Layout, Menu, theme } from "antd";
-import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
-import { ImGit } from "react-icons/im";
+import { FaListUl, FaQuestion } from "react-icons/fa";
 
 const { Header, Sider, Content } = Layout;
 
@@ -33,8 +29,10 @@ const Dashboard = ({ children }) => {
         collapsed={collapsed}
         style={{
           overflow: "auto",
-          height: "100d vh",
+          height: "100vh",
           position: "fixed",
+          background: "orange",
+          color: "black",
           zIndex: 1,
           left: 0,
           top: 0,
@@ -42,49 +40,98 @@ const Dashboard = ({ children }) => {
         }}
       >
         <div className="my-5 flex justify-center items-center">
-          <h1 className="text-xl text-white">
+          <h1 className="text-xl text-black font-bold">
             {!collapsed ? "Flexisales Tools" : "Flexi"}
           </h1>
         </div>
-        <Menu theme="dark" mode="inline" selectedKeys={[currentPath]}>
-          <Menu.Item key="/" icon={<FaQuestion />}>
+        <Menu
+          theme="transparent"
+          mode="inline"
+          selectedKeys={[currentPath]}
+          style={{ color: "black" }}
+        >
+          <Menu.Item
+            key="/"
+            icon={<FaQuestion style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/" && "shadow-md"}
+            style={{
+              background: currentPath === "/" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/" && "bold",
+            }}
+          >
             <Link to="/">CQ Questions</Link>
           </Menu.Item>
-          <Menu.Item key="/List" icon={<FaListUl />}>
+          <Menu.Item
+            key="/List"
+            icon={<FaListUl style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/list" && "shadow-md"}
+            style={{
+              background: currentPath === "/List" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/List" && "bold",
+            }}
+          >
             <Link to="/List">List</Link>
           </Menu.Item>
-          <Menu.Item key="/radio" icon={<MdOutlineRadioButtonChecked />}>
+          <Menu.Item
+            key="/radio"
+            icon={
+              <MdOutlineRadioButtonChecked style={{ fontWeight: "bold" }} />
+            }
+            className={currentPath === "/radio" && "shadow-md"}
+            style={{
+              background: currentPath === "/radio" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/radio" && "bold",
+            }}
+          >
             <Link to="/radio">Radio</Link>
           </Menu.Item>
-          <Menu.Item key="/checkbox" icon={<CheckOutlined />}>
+          <Menu.Item
+            key="/checkbox"
+            icon={<CheckOutlined style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/checkbox" && "shadow-md"}
+            style={{
+              background: currentPath === "/checkbox" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/checkbox" && "bold",
+            }}
+          >
             <Link to="/checkbox">Checkbox</Link>
           </Menu.Item>
-          {/* <Menu.Item key="/link-opener" icon={<FaLink />}>
-            <Link to="/link-opener">Link opener</Link>
-          </Menu.Item> */}
         </Menu>
-        <NavLink to="https://atultingre.vercel.app" target="_blanck">
-          <div className="fixed bottom-0 text-white flex items-center ml-3 justify-center gap-3 mb-5">
+        <NavLink to="https://atultingre.vercel.app" target="_blank">
+          <div className="fixed bottom-0 text-black flex items-center ml-1 justify-center gap-3 mb-5">
             {!collapsed ? (
-              <>
+              <div className="bg-white shadow-md flex gap-2 ml-1.5 items-center px-3 py-2 rounded-md">
                 <div>
                   <img
-                    src="./AtulSquare.jpg"
+                    src="./Atul.jpg"
                     alt="logo"
                     width={50}
                     className="rounded-full "
                   />
                 </div>
                 <div>
-                  <h1 className="font-semibold text-md">Atul Tingre</h1>
-                  <span className="text-[gold] hover:text-[orange]">Software Engineer</span>
+                  <h1 className="font-bold text-md">Atul Tingre</h1>
+                  <p className="text-[black] font-semibold hover:text-[black]">
+                    Web Developer
+                  </p>
+                  {/* <p className="text-[black] font-semibold hover:text-[black]">
+                    Flexisales
+                  </p> */}
+                  {/* <span className="text-[black] font-semibold hover:text-[black]">
+                    Software Engineer
+                  </span> */}
                 </div>
-              </>
+              </div>
             ) : (
-              <div>
+              <div className="bg-white shadow-md p-1 ml-2 rounded-full">
                 <img
-                  src="./Atul.jpg"
                   alt="logo"
+                  // src="./AtulSquare.jpg"
+                  src="./Atul.jpg"
                   width={50}
                   className="rounded-full "
                 />
@@ -120,7 +167,7 @@ const Dashboard = ({ children }) => {
         <Content
           style={{
             margin: "90px 16px 18px 16px",
-            minHeight: "82dvh",
+            minHeight: "82vh",
             padding: 24,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
