@@ -41,7 +41,7 @@ const Dashboard = ({ children }) => {
       >
         <div className="my-5 flex justify-center items-center">
           <h1 className="text-xl text-black font-bold">
-            {!collapsed ? "Flexisales Tools" : "Flexi"}
+            {!collapsed ? "Flexisales" : "Flexi"}
           </h1>
         </div>
         <Menu
