@@ -6,6 +6,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { MdOutlineRadioButtonChecked } from "react-icons/md";
+import { FaLink } from "react-icons/fa";
 import { Button, Layout, Menu, theme } from "antd";
 import { FaListUl, FaQuestion } from "react-icons/fa";
 
@@ -100,10 +101,23 @@ const Dashboard = ({ children }) => {
           >
             <Link to="/checkbox">Checkbox</Link>
           </Menu.Item>
+          <Menu.Item
+            key="/url-generator"
+            icon={<FaLink style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/url-generator" && "shadow-md"}
+            style={{
+              background: currentPath === "/url-generator" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/url-generator" && "bold",
+            }}
+          >
+            <Link to="/url-generator">Checkbox</Link>
+          </Menu.Item>
         </Menu>
         <NavLink to="https://atultingre.vercel.app" target="_blank">
           <div className="fixed bottom-0 text-black flex items-center ml-1 justify-center gap-3 mb-5">
-            {!collapsed ? (
+            {!
+            collapsed ? (
               <div className="bg-white shadow-md flex gap-2 ml-1.5 items-center px-3 py-2 rounded-md">
                 <div>
                   <img

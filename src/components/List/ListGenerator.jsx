@@ -35,7 +35,7 @@ const ListGenerator = () => {
     // Create HTML code with the filtered content
     const htmlCode = `
 ${heading ? `<p class="mb-3 last:mb-0"><b>${heading}</b></p>` : ""}
-<${listTag}>
+<${listTag} id="list">
 ${filteredContent
   .map((item) => {
     const [boldPart, ...rest] = item.split(":");
