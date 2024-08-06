@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
-import { MdOutlineRadioButtonChecked } from "react-icons/md";
+import { MdOutlineCampaign, MdOutlineRadioButtonChecked } from "react-icons/md";
 import { FaLink } from "react-icons/fa";
 import { Button, Layout, Menu, theme } from "antd";
 import { FaListUl, FaQuestion } from "react-icons/fa";
@@ -41,9 +41,11 @@ const Dashboard = ({ children }) => {
         }}
       >
         <div className="my-5 flex justify-center items-center">
-          <h1 className="text-xl text-black font-bold">
-            {!collapsed ? "Flexisales" : "Flexi"}
-          </h1>
+          <NavLink to={"/"}>
+            <h1 className="text-xl text-black font-bold">
+              {!collapsed ? "Flexisales" : "Flexi"}
+            </h1>
+          </NavLink>
         </div>
         <Menu
           theme="transparent"
@@ -53,7 +55,7 @@ const Dashboard = ({ children }) => {
         >
           <Menu.Item
             key="/"
-            icon={<FaQuestion style={{ fontWeight: "bold" }} />}
+            icon={<MdOutlineCampaign style={{ fontWeight: "bold" }} />}
             className={currentPath === "/" && "shadow-md"}
             style={{
               background: currentPath === "/" ? "white" : "",
@@ -61,7 +63,19 @@ const Dashboard = ({ children }) => {
               fontWeight: currentPath === "/" && "bold",
             }}
           >
-            <Link to="/">CQ Questions</Link>
+            <Link to="/">Campaigns</Link>
+          </Menu.Item>
+          <Menu.Item
+            key="/select"
+            icon={<FaQuestion style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/select" && "shadow-md"}
+            style={{
+              background: currentPath === "/select" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/select" && "bold",
+            }}
+          >
+            <Link to="/select">CQ Questions</Link>
           </Menu.Item>
           <Menu.Item
             key="/List"
@@ -111,7 +125,7 @@ const Dashboard = ({ children }) => {
               fontWeight: currentPath === "/url-generator" && "bold",
             }}
           >
-            <Link to="/url-generator">Checkbox</Link>
+            <Link to="/url-generator">Url Generator</Link>
           </Menu.Item>
           {/* <Menu.Item
             key="/link-opener"
