@@ -113,24 +113,35 @@ const Dashboard = ({ children }) => {
           >
             <Link to="/url-generator">Checkbox</Link>
           </Menu.Item>
+          {/* <Menu.Item
+            key="/link-opener"
+            icon={<FaLink style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/link-opener" && "shadow-md"}
+            style={{
+              background: currentPath === "/link-opener" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/link-opener" && "bold",
+            }}
+          >
+            <Link to="/link-opener">Link Opener</Link>
+          </Menu.Item> */}
         </Menu>
         <NavLink to="https://atultingre.vercel.app" target="_blank">
-          <div className="fixed bottom-0 text-black flex items-center ml-1 justify-center gap-3 mb-5">
-            {!
-            collapsed ? (
-              <div className="bg-white shadow-md flex gap-2 ml-1.5 items-center px-3 py-2 rounded-md">
+          <div className="fixed bottom-0 text-black flex items-center  justify-center gap-3 mb-5">
+            {!collapsed ? (
+              <div className="bg-white shadow-md flex gap-2 ml-1.5 items-center px-2 py-2 rounded-md">
                 <div>
                   <img
                     src="./Atul.jpg"
                     alt="logo"
-                    width={50}
+                    width={40}
                     className="rounded-full "
                   />
                 </div>
                 <div>
                   <h1 className="font-bold text-md">Atul Tingre</h1>
                   <p className="text-[black] font-semibold hover:text-[black]">
-                    Web Developer
+                    Software Developer
                   </p>
                   {/* <p className="text-[black] font-semibold hover:text-[black]">
                     Flexisales

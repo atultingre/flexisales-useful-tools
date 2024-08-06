@@ -5,6 +5,7 @@ import RadioGroupGenerator from "./components/Radio/RadioGroupGenerator";
 import Select from "./components/Select/Select";
 import ListGenerator from "./components/List/ListGenerator";
 import UrlGenerator from "./components/UrlGenerator/UrlGenerator";
+// import BulkLinkOpener from "./components/BulkLinkOpener/BulkLinkOpener";
 // import HtmlGeneratorForm from "./components/Template/HtmlGeneratorForm";
 
 const App = () => {
