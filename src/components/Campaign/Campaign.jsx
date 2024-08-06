@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import { Table, Button, Popconfirm, Modal, notification, Badge, Input, Select, DatePicker } from "antd";
+import {
+  Table,
+  Button,
+  Popconfirm,
+  Modal,
+  notification,
+  Badge,
+  Input,
+  Select,
+  DatePicker,
+} from "antd";
 import { deleteCampaign, getCampaigns } from "../../api";
 import { useNavigate } from "react-router-dom";
 import CampaignForm from "./CampaignForm";
@@ -13,7 +23,7 @@ const Campaigns = () => {
   const [filteredCampaigns, setFilteredCampaigns] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCampaign, setEditingCampaign] = useState(null);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     date: null,
     campaignType: null,
@@ -43,21 +53,25 @@ const Campaigns = () => {
   useEffect(() => {
     // Filter campaigns based on the searchText and filters
     let filtered = campaigns.filter((campaign) => {
-      const matchesSearchText = (
+      const matchesSearchText =
         campaign.date.toLowerCase().includes(searchText.toLowerCase()) ||
-        campaign.campaignType.toLowerCase().includes(searchText.toLowerCase()) ||
-        campaign.campaignCode.toLowerCase().includes(searchText.toLowerCase()) ||
+        campaign.campaignType
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
+        campaign.campaignCode
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
         campaign.landingPages.toString().includes(searchText.toLowerCase()) ||
         campaign.preparedBy.toLowerCase().includes(searchText.toLowerCase()) ||
-        campaign.status.toLowerCase().includes(searchText.toLowerCase())
-      );
+        campaign.status.toLowerCase().includes(searchText.toLowerCase());
 
-      const matchesFilters = (
-        (!filters.date || dayjs(campaign.date).isSame(dayjs(filters.date), 'day')) &&
-        (!filters.campaignType || campaign.campaignType === filters.campaignType) &&
+      const matchesFilters =
+        (!filters.date ||
+          dayjs(campaign.date).isSame(dayjs(filters.date), "day")) &&
+        (!filters.campaignType ||
+          campaign.campaignType === filters.campaignType) &&
         (!filters.preparedBy || campaign.preparedBy === filters.preparedBy) &&
-        (!filters.status || campaign.status === filters.status)
-      );
+        (!filters.status || campaign.status === filters.status);
 
       return matchesSearchText && matchesFilters;
     });
@@ -125,7 +139,12 @@ const Campaigns = () => {
         <div style={{ padding: 8 }}>
           <DatePicker
             style={{ width: 188, marginBottom: 8 }}
-            onChange={(date) => setFilters({ ...filters, date: date ? date.format('YYYY-MM-DD') : null })}
+            onChange={(date) =>
+              setFilters({
+                ...filters,
+                date: date ? date.format("YYYY-MM-DD") : null,
+              })
+            }
           />
         </div>
       ),
@@ -226,15 +245,21 @@ const Campaigns = () => {
   return (
     <div>
       <div className="flex flex-col justify-between items-center mb-5">
-        <div className="text-end w-full">
+        <div className="text-end transparent w-full">
           {!user ? (
-            <Button type="primary" onClick={() => navigate("/login")}>
-              Login
-            </Button>
+            <button
+              className="cursor-pointer w-10 h-5"
+              type="primary"
+              onClick={() => navigate("/login")}
+            ></button>
           ) : (
-            <Button type="primary" onClick={() => logout()}>
+            <button
+              className="cursor-pointer w-10 h-5"
+              type="primary"
+              onClick={() => logout()}
+            >
               Logout
-            </Button>
+            </button>
           )}
         </div>
         <div className="flex justify-between items-center w-full mt-4">
