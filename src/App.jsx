@@ -9,6 +9,7 @@ import Campaign from "./components/Campaign/Campaign";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import TemplateCard from "./components/Template/TemplateCard";
+import EmailTemplateGenerator from "./components/EmailTemplateGenerator/EmailTemplateGenerator";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/list" element={<ListGenerator />} />
         <Route path="/url-generator" element={<UrlGenerator />} />
         <Route path="/template" element={<TemplateCard />} />
+        <Route path="/email-template" element={<EmailTemplateGenerator />} />
       </Routes>
     </Dashboard>
   );

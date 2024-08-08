@@ -20,6 +20,7 @@ const SideBarMenu = () => {
     { key: "/select", icon: <FaQuestion />, label: "CQ Questions" },
     { key: "/list", icon: <FaListUl />, label: "List" },
     { key: "/url-generator", icon: <FaLink />, label: "Url Generator" },
+    { key: "/email-template", icon: <MdOutlineRadioButtonChecked />, label: "Email Template" },
     { key: "/radio", icon: <MdOutlineRadioButtonChecked />, label: "Radio" },
     { key: "/checkbox", icon: <CheckOutlined />, label: "Checkbox" },
   ];
