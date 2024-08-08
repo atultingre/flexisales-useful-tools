@@ -69,14 +69,13 @@ const CheckboxGroupGenerator = () => {
 
   return (
     <div className="p-4">
-      <div className="flex w-full justify-between items-center mb-10">
-        <h2 className="text-2xl font-semibold">Generate Checkbox Code</h2>
-        <div className="flex">
-          <Button type="primary" onClick={handleAddCheckbox} className="mr-4">
+      <div className="flex flex-col md:flex-row w-full md:justify-between md:items-center mb-10">
+        <h2 className="text-xl md:text-2xl mb-4 font-semibold">
+          Generate Checkbox Code
+        </h2>
+        <div className="flex flex-col md:flex-row gap-3">
+          <Button type="primary" onClick={handleAddCheckbox} className="">
             Add Checkbox +
-          </Button>
-          <Button type="dashed" danger onClick={handleClear}>
-            Clear All
           </Button>
         </div>
       </div>
@@ -130,7 +129,7 @@ const CheckboxGroupGenerator = () => {
             </div>
           )}
         </div>
-        <div className="flex w-full gap-5">
+        <div className="flex flex-col md:flex-row w-full gap-3">
           <Button
             type="primary"
             onClick={handleGenerateCode}
@@ -145,6 +144,9 @@ const CheckboxGroupGenerator = () => {
             className="p-2 w-full"
           >
             Copy to Clipboard
+          </Button>
+          <Button type="dashed" danger onClick={handleClear}>
+            Clear All
           </Button>
         </div>
       </div>

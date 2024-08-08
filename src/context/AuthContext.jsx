@@ -1,13 +1,18 @@
 // src/context/AuthContext.js
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { login as loginUser, signup as signupUser } from "../api";
+import { theme } from "antd";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem("userInfo") || null);
-  console.log('user: ', user);
+  const [collapsed, setCollapsed] = useState(true);
+  const [mobileSideBarOpen, setMobileSideBarOpen] = useState(false);
 
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
@@ -31,7 +36,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        signup,
+        logout,
+        collapsed,
+        setCollapsed,
+        colorBgContainer,
+        borderRadiusLG,mobileSideBarOpen, setMobileSideBarOpen
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

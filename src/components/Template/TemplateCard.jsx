@@ -46,7 +46,7 @@ const TemplateCard = () => {
 
   return (
     <div className="p-4">
-      <div className="flex flex-col md:flex-row justify-between items-center mb-8  rounded-lg ">
+      <div className="flex flex-col md:flex-row justify-between  mb-8  rounded-lg ">
         <div>
           <h2 className="text-2xl font-semibold mb-4">Templates</h2>
         </div>

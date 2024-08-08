@@ -75,16 +75,14 @@ const RadioGroupGenerator = () => {
 
   return (
     <div className="p-4">
-      <div className="flex w-full justify-between items-center mb-10">
-        <h2 className="text-2xl font-semibold">
-          Generate Radio Button Groups Code
+      <div className="flex flex-col md:flex-row  w-full md:justify-between md:items-center mb-10">
+        <h2 className="text-xl md:text-2xl mb-4 font-semibold">
+          Generate Radio Button
         </h2>
-        <div className="flex">
-          <Button type="primary" onClick={handleAddRadioGroup} className="mr-4">
+
+        <div className="flex flex-col md:flex-row  gap-4">
+          <Button type="primary" onClick={handleAddRadioGroup} className="">
             Add Radio Group +
-          </Button>
-          <Button type="dashed" danger onClick={handleClear}>
-            Clear All
           </Button>
         </div>
       </div>
@@ -111,7 +109,7 @@ const RadioGroupGenerator = () => {
           </div>
         ))}
       </div>
-      <div className="flex mt-4 justify-between space-y-2 gap-5">
+      <div className="flex flex-col md:flex-row mt-4 md:justify-between space-y-2 gap-5">
         <div className="w-full">
           <h3 className="text-xl font-semibold mb-2">Generated code</h3>
           <TextArea
@@ -132,7 +130,7 @@ const RadioGroupGenerator = () => {
           </div>
         )}
       </div>
-      <div className="flex w-full mt-5 gap-5">
+      <div className="flex flex-col md:flex-row  w-full mt-5 gap-3">
         <Button
           type="primary"
           onClick={handleGenerateCode}
@@ -147,6 +145,9 @@ const RadioGroupGenerator = () => {
           className="p-2 w-full"
         >
           Copy to Clipboard
+        </Button>
+        <Button type="dashed" danger onClick={handleClear} className="w-full">
+          Clear All
         </Button>
       </div>
     </div>

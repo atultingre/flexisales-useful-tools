@@ -20,11 +20,16 @@ const Select = () => {
 
         return `
   <p>${config.question}</p>
-  <select name="cq${
-    index + 1
-  }[]" id="cq${index + 1}" class="form-control" style="overflow:auto;" required ${config.isMultiple ? " multiple" : ""}>
+  <select name="cq${index + 1}[]" id="cq${
+          index + 1
+        }" class="form-control" style="overflow:auto;" required ${
+          config.isMultiple ? " multiple" : ""
+        }>
     ${optionsArray
-      .map((option) => `<option value="${option}" title="${option}">${option}</option>`)
+      .map(
+        (option) =>
+          `<option value="${option}" title="${option}">${option}</option>`
+      )
       .join("\n  ")}
   </select>`;
       })
@@ -74,14 +79,13 @@ const Select = () => {
 
   return (
     <div className="p-4">
-      <div className="flex w-full justify-between items-center mb-10">
-        <h2 className="text-2xl font-semibold">Generate CQ Questions Code</h2>
-        <div className="flex">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-10 w-full">
+        <h2 className="text-xl md:text-2xl mb-4 font-semibold">
+          Generate CQ Questions Code
+        </h2>
+        <div className="flex flex-col md:flex-row gap-4">
           <Button type="primary" onClick={handleAddSelect}>
             Add Select +
-          </Button>
-          <Button type="dashed" danger onClick={handleClear} className="ml-4">
-            Clear All
           </Button>
         </div>
       </div>
@@ -143,7 +147,7 @@ const Select = () => {
           </div>
         )}
       </div>
-      <div className="flex w-full gap-5 mt-3">
+      <div className="flex flex-col md:flex-row w-full gap-3 mt-3">
         <Button
           type="primary"
           onClick={handleGenerateCode}
@@ -152,12 +156,15 @@ const Select = () => {
           Generate Code
         </Button>
         <Button
-          type="primary"
-          danger
+          type="dashed"
+          
           onClick={handleCopyToClipboard}
           className="p-2 w-full"
         >
           Copy to Clipboard
+        </Button>
+        <Button type="primary" danger onClick={handleClear} className="">
+          Clear All
         </Button>
       </div>
     </div>

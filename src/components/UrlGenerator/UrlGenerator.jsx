@@ -58,9 +58,10 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <Title level={2}>URL Generator</Title>
-      <div className="flex justify-between items-center gap-6 ">
+    <div>
+      <h2 className="text-xl md:text-2xl mb-4 font-semibold">URL Generator</h2>
+
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 ">
         <div className="w-full">
           <Title level={5}>Select Base URL:</Title>
           <Select
@@ -103,7 +104,7 @@ function App() {
         </div>
       </div>
 
-      <div className="flex justify-between gap-6 mt-6">
+      <div className="flex flex-col md:flex-row justify-between gap-4 mt-6">
         <div className="w-full">
           <Title level={5}>Enter User Names (one per line):</Title>
           <TextArea
@@ -118,12 +119,17 @@ function App() {
           <List
             bordered
             dataSource={generatedUrls}
-            renderItem={(item) => <List.Item><a href={item} target="_blanck">{item}</a></List.Item>}
+            renderItem={(item) => (
+              <List.Item>
+                <a href={item} target="_blanck">
+                  {item}
+                </a>
+              </List.Item>
+            )}
           />
         </div>
       </div>
-
-      <div className="flex justify-between gap-6 mt-6">
+      <div className="flex flex-col md:flex-row justify-between gap-3 mt-6">
         <div className="w-full">
           <Button
             type="primary"
@@ -150,7 +156,6 @@ function App() {
             danger
             icon={<ClearOutlined />}
             className="w-full"
-            style={{ marginLeft: "10px" }}
             onClick={handleClearForm}
           >
             Clear Form

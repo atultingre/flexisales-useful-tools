@@ -91,18 +91,18 @@ ${filteredContent
         onChange={(e) => setContent(e.target.value)}
         className="mb-4 p-2 border border-gray-300 rounded"
       />
-      <div className="flex space-x-2 mb-4">
-        <Button type="primary" onClick={handleGenerateCode}>
+      <div className="flex flex-col md:flex-row gap-3 w-full mb-4">
+        <Button type="primary" className="w-full" onClick={handleGenerateCode}>
           Generate Code
         </Button>
-        <Button type="primary" onClick={handleCopyToClipboard}>
+        <Button type="primary" className="w-full" onClick={handleCopyToClipboard}>
           Copy to Clipboard
         </Button>
-        <Button type="dashed" danger onClick={handleClear}>
+        <Button type="dashed" className="w-full" danger onClick={handleClear}>
           Clear All
         </Button>
       </div>
-      <div className="flex space-x-4">
+      <div className="flex flex-col md:flex-row space-x-4">
         <div className="w-full pl-2">
           <h3 className="text-lg font-semibold mb-2">Generated Code</h3>
           <Input.TextArea
