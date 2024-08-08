@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "image": "./Cover.png",
+    "campaignName": "TT",
+    "htmlFile": "./TT/index.html",
+    "resFile": "./TT/res.php",
+    "configFile": "./TT/config.php",
+    "instructions": {
+      "FileChanges": "Title, Heading, Content, Form: Form title, PDF",
+      "Host": "techtree.com",
+      "Screenshot": "PDF",
+      "Email": {
+        "To": "Rakesh Kaduskar",
+        "CC": "Rohit Shahane, Shashank Dhumal, Sourabh, Nandkishor Kadam, Avinash, Mahajan"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "image": "./AtulSquare.jpg",
+    "campaignName": "HQ",
+    "htmlFile": "./HQ/index.html",
+    "resFile": "./HQ/res.php",
+    "configFile": "./HQ/config.php",
+    "instructions": {
+      "FileChanges": "Title, Heading, Content (doc file), Form: Form title, CQ, PDF",
+      "Host": "techtree.com",
+      "Screenshot": "PDF",
+      "Email": {
+        "To": "Rakesh Kaduskar",
+        "CC": "Rohit Shahane, Shashank Dhumal, Sourabh, Nandkishor Kadam, Avinash, Mahajan"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "image": "./Atul.jpg",
+    "campaignName": "GG",
+    "htmlFile": "./GG/index.html",
+    "resFile": "./GG/res.php",
+    "configFile": "./GG/config.php",
+    "instructions": {
+      "FileChanges": "Same as per CR",
+      "Host": "b2b.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "image": "./Cover.png",
+    "campaignName": "FS",
+    "htmlFile": "./FS/index.html",
+    "resFile": "./FS/res.php",
+    "configFile": "./FS/config.php",
+    "instructions": {
+      "FileChanges": "Excel sheet -> Asset -> Optin not required, Email to IT for asset PDF",
+      "Host": "techtree.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "image": "./AtulSquare.jpg",
+    "campaignName": "IT",
+    "htmlFile": "./IT/index.html",
+    "resFile": "./IT/res.php",
+    "configFile": "./IT/config.php",
+    "instructions": {
+      "FileChanges": "Remove hyperlinks from images, Res file to form, Remove footer and add our footer, Check the form input name with res file",
+      "Host": "techtree.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "image": "./Atul.jpg",
+    "campaignName": "CR",
+    "htmlFile": "./CR/index.html",
+    "resFile": "./CR/res.php",
+    "configFile": "./CR/config.php",
+    "instructions": {
+      "FileChanges": "Same as per GG",
+      "Host": "techtree.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "image": "./Cover.png",
+    "campaignName": "DA",
+    "htmlFile": "./DA/index.html",
+    "resFile": "./DA/res.php",
+    "configFile": "./DA/config.php",
+    "instructions": {
+      "FileChanges": "",
+      "Host": "b2b.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "image": "./AtulSquare.jpg",
+    "campaignName": "JM",
+    "htmlFile": "./JM/index.html",
+    "resFile": "./JM/res.php",
+    "configFile": "./JM/config.php",
+    "instructions": {
+      "FileChanges": "",
+      "Host": "b2b.com",
+      "Email": {
+        "To": "fsemcampaign",
+        "CC": "Yogesh Rautela"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "image": "./Atul.jpg",
+    "campaignName": "CL",
+    "htmlFile": "./CL/index.html",
+    "resFile": "./CL/res.php",
+    "configFile": "./CL/config.php",
+    "instructions": {
+      "FileChanges": "",
+      "Host": "",
+      "Email": {
+        "To": "",
+        "CC": ""
+      }
+    }
+  },
+  {
+    "id": 10,
+    "image": "./Atul.jpg",
+    "campaignName": "TD",
+    "htmlFile": "./TD/index.html",
+    "resFile": "./TD/res.php",
+    "configFile": "./TD/config.php",
+    "instructions": {
+      "FileChanges": "",
+      "Host": "b2b.com",
+      "Email": {
+        "To": "Santosh Londhe",
+        "CC": "Joann Cabrel, Mahesh, Yogesh, Nitesh Mishra, Shravan Lovanshi, Sourabh, Nandkishor, Avinash, TD Operations"
+      }
+    }
+  }
+]

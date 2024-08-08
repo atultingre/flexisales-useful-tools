@@ -6,9 +6,9 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { MdOutlineCampaign, MdOutlineRadioButtonChecked } from "react-icons/md";
-import { FaLink } from "react-icons/fa";
+import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
+import { HiTemplate } from "react-icons/hi";
 import { Button, Layout, Menu, theme } from "antd";
-import { FaListUl, FaQuestion } from "react-icons/fa";
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,9 +17,18 @@ const Dashboard = ({ children }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
   const location = useLocation();
   const currentPath = location.pathname;
+
+  const menuItems = [
+    { key: "/", icon: <MdOutlineCampaign />, label: "Campaigns" },
+    { key: "/template", icon: <HiTemplate />, label: "Campaign Template" },
+    { key: "/select", icon: <FaQuestion />, label: "CQ Questions" },
+    { key: "/list", icon: <FaListUl />, label: "List" },
+    { key: "/url-generator", icon: <FaLink />, label: "Url Generator" },
+    { key: "/radio", icon: <MdOutlineRadioButtonChecked />, label: "Radio" },
+    { key: "/checkbox", icon: <CheckOutlined />, label: "Checkbox" },
+  ];
 
   return (
     <Layout>
@@ -29,21 +38,16 @@ const Dashboard = ({ children }) => {
         className="h-dvh"
         collapsed={collapsed}
         style={{
-          overflow: "auto",
-          height: "100vh",
           position: "fixed",
+          height: "100vh",
           background: "orange",
-          color: "black",
           zIndex: 1,
-          left: 0,
-          top: 0,
-          bottom: 0,
         }}
       >
         <div className="my-5 flex justify-center items-center">
-          <NavLink to={"/"}>
+          <NavLink to="/">
             <h1 className="text-xl text-black font-bold">
-              {!collapsed ? "Developer" : "Dev"}
+              {collapsed ? "Dev" : "Developer"}
             </h1>
           </NavLink>
         </div>
@@ -51,132 +55,45 @@ const Dashboard = ({ children }) => {
           theme="transparent"
           mode="inline"
           selectedKeys={[currentPath]}
-          style={{ color: "black" }}
+          className="text-black"
         >
-          <Menu.Item
-            key="/"
-            icon={<MdOutlineCampaign style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/" && "shadow-md"}
-            style={{
-              background: currentPath === "/" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/" && "bold",
-            }}
-          >
-            <Link to="/">Campaigns</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="/select"
-            icon={<FaQuestion style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/select" && "shadow-md"}
-            style={{
-              background: currentPath === "/select" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/select" && "bold",
-            }}
-          >
-            <Link to="/select">CQ Questions</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="/List"
-            icon={<FaListUl style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/list" && "shadow-md"}
-            style={{
-              background: currentPath === "/List" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/List" && "bold",
-            }}
-          >
-            <Link to="/List">List</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="/url-generator"
-            icon={<FaLink style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/url-generator" && "shadow-md"}
-            style={{
-              background: currentPath === "/url-generator" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/url-generator" && "bold",
-            }}
-          >
-            <Link to="/url-generator">Url Generator</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="/radio"
-            icon={
-              <MdOutlineRadioButtonChecked style={{ fontWeight: "bold" }} />
-            }
-            className={currentPath === "/radio" && "shadow-md"}
-            style={{
-              background: currentPath === "/radio" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/radio" && "bold",
-            }}
-          >
-            <Link to="/radio">Radio</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="/checkbox"
-            icon={<CheckOutlined style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/checkbox" && "shadow-md"}
-            style={{
-              background: currentPath === "/checkbox" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/checkbox" && "bold",
-            }}
-          >
-            <Link to="/checkbox">Checkbox</Link>
-          </Menu.Item>
-
-          {/* <Menu.Item
-            key="/link-opener"
-            icon={<FaLink style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/link-opener" && "shadow-md"}
-            style={{
-              background: currentPath === "/link-opener" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/link-opener" && "bold",
-            }}
-          >
-            <Link to="/link-opener">Link Opener</Link>
-          </Menu.Item> */}
+          {menuItems.map(({ key, icon, label }) => (
+            <Menu.Item
+              key={key}
+              icon={React.cloneElement(icon, { style: { fontWeight: "bold" } })}
+              className={currentPath === key ? "shadow-md" : ""}
+              style={{
+                background: currentPath === key ? "white" : "",
+                color: "black",
+                fontWeight: currentPath === key ? "bold" : "normal",
+              }}
+            >
+              <Link to={key}>{label}</Link>
+            </Menu.Item>
+          ))}
         </Menu>
         <NavLink to="https://atultingre.vercel.app" target="_blank">
-          <div className="fixed bottom-0 text-black flex items-center  justify-center gap-3 mb-5">
-            {!collapsed ? (
-              <div className="bg-white shadow-md flex gap-2 ml-1.5 items-center px-2 py-2 rounded-md">
-                <div>
-                  <img
-                    src="./Atul.jpg"
-                    alt="logo"
-                    width={40}
-                    className="rounded-full "
-                  />
-                </div>
+          <div className="fixed bottom-0 text-black flex items-center justify-center gap-3 mb-5">
+            <div
+              className={`bg-white shadow-md ${
+                collapsed
+                  ? "p-1 ml-2 rounded-full"
+                  : "flex gap-2 ml-1.5 items-center px-2 py-2 rounded-md"
+              }`}
+            >
+              <img
+                src="./Atul.jpg"
+                alt="logo"
+                width={collapsed ? 50 : 40}
+                className="rounded-full"
+              />
+              {!collapsed && (
                 <div>
                   <h1 className="font-bold text-md">Atul Tingre</h1>
-                  <p className="text-[black] font-semibold hover:text-[black]">
-                    Software Developer
-                  </p>
-                  {/* <p className="text-[black] font-semibold hover:text-[black]">
-                    Flexisales
-                  </p> */}
-                  {/* <span className="text-[black] font-semibold hover:text-[black]">
-                    Software Engineer
-                  </span> */}
+                  <p className="text-black font-semibold">Software Developer</p>
                 </div>
-              </div>
-            ) : (
-              <div className="bg-white shadow-md p-1 ml-2 rounded-full">
-                <img
-                  alt="logo"
-                  // src="./AtulSquare.jpg"
-                  src="./Atul.jpg"
-                  width={50}
-                  className="rounded-full "
-                />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </NavLink>
       </Sider>
@@ -187,26 +104,20 @@ const Dashboard = ({ children }) => {
             background: colorBgContainer,
             position: "fixed",
             zIndex: 1,
-            width: "100vw",
-            left: 0,
-            top: 0,
-            marginLeft: collapsed ? 80 : 200,
+            width: "100%",
+            marginLeft: collapsed ? 0 : 0,
           }}
         >
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
+            style={{ fontSize: "16px", width: 64, height: 64 }}
           />
         </Header>
         <Content
           style={{
-            margin: "90px 16px 18px 16px",
+            margin: "90px 16px 18px",
             minHeight: "82vh",
             padding: 24,
             background: colorBgContainer,

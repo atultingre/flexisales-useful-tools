@@ -8,11 +8,9 @@ import UrlGenerator from "./components/UrlGenerator/UrlGenerator";
 import Campaign from "./components/Campaign/Campaign";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
-// import BulkLinkOpener from "./components/BulkLinkOpener/BulkLinkOpener";
-// import HtmlGeneratorForm from "./components/Template/HtmlGeneratorForm";
+import TemplateCard from "./components/Template/TemplateCard";
 
 const App = () => {
-
   return (
     <Dashboard>
       <Routes>
@@ -24,9 +22,8 @@ const App = () => {
         <Route path="/checkbox" element={<CheckboxGroupGenerator />} />
         <Route path="/list" element={<ListGenerator />} />
         <Route path="/url-generator" element={<UrlGenerator />} />
-        {/* <Route path="/link-opener" element={<BulkLinkOpener />} /> */}
+        <Route path="/template" element={<TemplateCard />} />
       </Routes>
-      {/* <HtmlGeneratorForm /> */}
     </Dashboard>
   );
 };

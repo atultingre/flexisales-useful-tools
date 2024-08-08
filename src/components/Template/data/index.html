@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Product Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Mulish", sans-serif;
+      /* font-family: "Poppins", sans-serif; */
+    }
+
+    .poppins-thin {
+      font-weight: 100;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <header class="fixed top-0 w-full p-0.5 bg-gray-300">
+    <div class="container flex justify-start px-4">
+      <img src="./Logo.png" alt="logo" class="w-20" />
+    </div>
+  </header>
+
+  <main class="container mt-[100px] mx-auto p-6">
+    <div class="mb-12 text-center">
+      <h1 class="text-2xl md:text-4xl font-bold text-blue-900 leading-tight">
+        Accelerate cloud innovation with a robust security framework
+      </h1>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Left Column -->
+      <div class="space-y-6">
+        <p class="text-lg">
+          As organizations fast-track cloud adoption, they encounter a broader
+          attack surface and heightened cybersecurity risks. This white paper
+          details how a strong cloud security framework empowers organizations
+          to harness cloud cybersecurity and innovate confidently.
+        </p>
+        <div class="bg-white p-4 shadow-md rounded-lg">
+          <b class="text-blue-900">Covered topics:</b>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li>
+              Balancing digital tech integration with an expanding attack
+              surface
+            </li>
+            <li>
+              Embracing a holistic cybersecurity approach for built-in
+              security and compliance
+            </li>
+            <li>
+              Using AI analytics and shared intelligence to preempt attacks
+            </li>
+            <li>
+              Crafting incident response and recovery plans to protect data,
+              systems, and reputation
+            </li>
+          </ul>
+        </div>
+        <img src="./Capture.png" alt="Cover img" class="w-full rounded-lg shadow-md" />
+        <p class="text-lg">
+          For insights on accelerating cloud initiatives with
+          ConvergeSECURITY's integrated cybersecurity, read the full paper.
+        </p>
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-6">
+        <div class="bg-white p-6 shadow-lg rounded-lg">
+          <h2 class="text-xl font-semibold text-center text-blue-900 mb-4">
+            Download this White Paper!
+          </h2>
+          <form action="res.php" method="post" class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="md:col-span-2">
+              <div class="md:col-span-2">
+                <input id="campaign" name="campaign" type="hidden" value="TT Campaigns 07292024" required />
+                <input id="assetname" name="assetname" type="hidden"
+                  value="Accelerate cloud innovation with a robust security framework" required />
+              </div>
+
+              <div class="md:col-span-1 mt-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Corporate Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Corporate email address"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="firstname" class="block text-sm font-medium text-gray-700">First Name</label>
+                <input type="text" id="firstName" name="firstname" placeholder="First Name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="lastname" class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input type="text" id="lastName" name="lastname" placeholder="Last Name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="md:col-span-2 mt-4">
+                <label for="company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                <input type="text" id="company" name="company" placeholder="Company Name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="jobtitle" class="block text-sm font-medium text-gray-700">Job Title</label>
+                <input type="text" id="jobTitle" name="jobtitle" placeholder="Job Title"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="companysize" class="block text-sm font-medium text-gray-700">No of Employees</label>
+                <select id="companysize" name="companysize"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required>
+                  <option value="">Select</option>
+                  <!-- Add options here -->
+                </select>
+              </div>
+
+              <div class="mt-4">
+                <label for="industry" class="block text-sm font-medium text-gray-700">Industry</label>
+                <select id="industry" name="industry" class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2"
+                  required>
+                  <option value="">Select</option>
+                  <!-- Add options here -->
+                </select>
+              </div>
+
+              <div class="mt-4">
+                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                <input type="text" id="city" name="city" placeholder="City"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                <select id="country" name="country" class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2"
+                  required>
+                  <option value="">Select</option>
+                  <!-- Add options here -->
+                </select>
+              </div>
+
+              <div class="mt-4">
+                <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                <input type="text" id="state" name="state" placeholder="State"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="font-semibold mt-4">
+                <label for="zipcode" class="block text-sm font-medium text-gray-700">Zipcode</label>
+                <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+
+              <div class="mt-4">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Phone"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-2" required />
+              </div>
+            </div>
+
+            <div class="md:col-span-2 space-y-4 text-gray-700">
+              <div>
+                <input id="optin1" name="optin1" type="checkbox" value="yes" class="mr-2" required />
+                I agree to receive email reports, articles, event invitations
+                and other information related to Deloitte products and
+                services. I understand I may unsubscribe at any time by
+                clicking the link included in emails. The submission of
+                personal information through this page is subject to
+                <a href="https://www2.deloitte.com/us/en/legal/privacy.html"
+                  class="text-blue-700 hover:underline">Deloitte's Privacy Statement and Legal Terms</a>. I have read
+                and accept the terms of use.
+              </div>
+              <div>
+                <input id="optin2" name="optin2" type="checkbox" value="yes" class="mr-2" required />
+                I agree to receive email reports, articles, event invitations
+                and other information related to Deloitte products and
+                services. I understand I may unsubscribe at any time by
+                clicking the link included in emails. The submission of
+                personal information through this page is subject to
+                <a href="https://www2.deloitte.com/us/en/legal/privacy.html"
+                  class="text-blue-700 hover:underline">Deloitte's Privacy Statement and Legal Terms</a>. I have read
+                and accept the terms of use.
+              </div>
+              <div>
+                <input id="optin3" name="optin3" type="checkbox" value="yes" class="mr-2" required />
+                Yes, I'd like
+                <a href="https://www.techtarget.com/privacy-policy-may25/"
+                  class="text-blue-700 hover:underline">TechTarget, Inc.</a>
+                to provide my contact information to
+                <a href="https://aws.amazon.com/legal/marketingentities/" class="text-blue-700 hover:underline">Amazon
+                  Web Services (AWS)</a>
+                so AWS can share the latest AWS news and offers with me by
+                email, post or telephone. You may unsubscribe from receiving
+                news and offers from the sender at any time by following the
+                instructions in the communications received. AWS handles your
+                information as described in the
+                <a href="https://aws.amazon.com/privacy/" class="text-blue-700 hover:underline">AWS Privacy Notice</a>.
+              </div>
+              <div>
+                <p>I am completing this form in connection with my:</p>
+                <div class="flex items-center space-x-4">
+                  <label>
+                    <input type="radio" name="optin4" value="Business Interests" id="Business Interests" class="mr-2" />
+                    Business Interests
+                  </label>
+                  <label>
+                    <input type="radio" name="optin4" value="Personal Interests" id="Personal Interests" class="mr-2" />
+                    Personal Interests
+                  </label>
+                </div>
+              </div>
+              <div>
+                <input id="optin5" name="optin5" type="checkbox" value="by email" class="mr-2" required />
+                I agree to TechTarget’s
+                <a href="https://www.techtarget.com/terms-of-use/" class="text-blue-700 hover:underline">Terms of
+                  Use</a>,
+                <a href="https://www.techtarget.com/privacy-policy/" class="text-blue-700 hover:underline">Privacy
+                  Policy</a>, and the transfer of my information to the United States for
+                processing to provide me with relevant information as
+                described in TechTarget’s Privacy Policy.
+              </div>
+              <div>
+                <input id="optin6" name="optin6" type="checkbox" value="by email" class="mr-2" required />
+                I agree to TechTree’s
+                <a href="http://techtree.biz/Biztech/Techtree_Market_Privacy_Policy.html"
+                  class="text-blue-700 hover:underline">Privacy Policy</a>.
+              </div>
+              <div>
+                <input id="optin7" name="optin7" type="checkbox" value="by email" class="mr-2" required />
+                I agree to my information being processed by TechTarget and
+                its
+                <a href="https://www.techtarget.com/privacy-partners/"
+                  class="text-blue-700 hover:underline">Partners</a>
+                to contact me via phone, email, or other means regarding
+                information relevant to my profession interests. I may
+                <a href="mailto:ttgtprivacy@techtarget.com?subject=Unsubscribe%20me%20from%20all%20TechTarget%20emails%20-FS.&body=Please%20unsubscribe%20me%20from%20all%20TechTarget%20emails.%20"
+                  class="text-blue-700 hover:underline">unsubscribe</a>
+                at any time.
+              </div>
+            </div>
+
+            <div class="md:col-span-2">
+              <button type="submit"
+                class="w-full p-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800">
+                Download Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="p-6 bg-gray-300 text-black text-center">
+    <p>&copy; 2024 ConvergeSECURITY. All rights reserved.</p>
+  </footer>
+  <script>
+
+    const countries = [
+      "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
+      "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia",
+      "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+      "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+      "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+      "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam",
+      "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
+      "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile",
+      "China", "Christmas Island", "Cocos(Keeling) Islands", "Colombia", "Comoros",
+      "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica",
+      "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
+      "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador",
+      "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
+      "Ethiopia", "Falkland Islands(Malvinas)", "Faroe Islands", "Fiji", "Finland",
+      "France", "France, Metropolitan", "French Guiana", "French Polynesia",
+      "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany",
+      "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe",
+      "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti",
+      "Heard and McDonald Islands", "Holy See (Vatican City State)", "Honduras",
+      "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)",
+      "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan",
+      "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of",
+      "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon",
+      "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania",
+      "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar",
+      "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique",
+      "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of",
+      "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique",
+      "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles",
+      "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue",
+      "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan",
+      "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+      "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania",
+      "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+      "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal",
+      "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+      "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain",
+      "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname",
+      "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland",
+      "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan",
+      "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga",
+      "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands",
+      "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
+      "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan",
+      "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)",
+      "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia",
+      "Zimbabwe"
+    ];
+
+    const selectElement = document.getElementById('country');
+    countries.forEach(country => {
+      const option = document.createElement('option');
+      option.value = country;
+      option.textContent = country;
+      selectElement.appendChild(option);
+    });
+
+  </script>
+  <script>
+    document.getElementById('product-showcase-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+      console.log('Form Data:', data);
+      // Optionally, submit the form data to the server here
+    });
+  </script>
+</body>
+
+</html>
