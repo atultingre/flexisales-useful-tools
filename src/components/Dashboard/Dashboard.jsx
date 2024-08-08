@@ -90,6 +90,18 @@ const Dashboard = ({ children }) => {
             <Link to="/List">List</Link>
           </Menu.Item>
           <Menu.Item
+            key="/url-generator"
+            icon={<FaLink style={{ fontWeight: "bold" }} />}
+            className={currentPath === "/url-generator" && "shadow-md"}
+            style={{
+              background: currentPath === "/url-generator" ? "white" : "",
+              color: "black",
+              fontWeight: currentPath === "/url-generator" && "bold",
+            }}
+          >
+            <Link to="/url-generator">Url Generator</Link>
+          </Menu.Item>
+          <Menu.Item
             key="/radio"
             icon={
               <MdOutlineRadioButtonChecked style={{ fontWeight: "bold" }} />
@@ -115,18 +127,7 @@ const Dashboard = ({ children }) => {
           >
             <Link to="/checkbox">Checkbox</Link>
           </Menu.Item>
-          <Menu.Item
-            key="/url-generator"
-            icon={<FaLink style={{ fontWeight: "bold" }} />}
-            className={currentPath === "/url-generator" && "shadow-md"}
-            style={{
-              background: currentPath === "/url-generator" ? "white" : "",
-              color: "black",
-              fontWeight: currentPath === "/url-generator" && "bold",
-            }}
-          >
-            <Link to="/url-generator">Url Generator</Link>
-          </Menu.Item>
+
           {/* <Menu.Item
             key="/link-opener"
             icon={<FaLink style={{ fontWeight: "bold" }} />}

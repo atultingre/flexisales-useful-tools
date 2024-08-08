@@ -75,8 +75,12 @@ ${filteredContent
         value={listType}
         className="mb-4"
       >
-        <Radio value="ul-bold">Unordered List Bold with :</Radio>
-        <Radio value="ul-normal">Unordered List Normal</Radio>
+        <Radio value="ul-bold" className="font-bold">
+          Unordered List Bold with :
+        </Radio>
+        <Radio value="ul-normal" className="font-bold">
+          Unordered List Normal
+        </Radio>
         <Radio value="ol-bold">Ordered List Bold with :</Radio>
         <Radio value="ol-normal">Ordered List Normal</Radio>
       </Radio.Group>
