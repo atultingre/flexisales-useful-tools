@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { Select, Input, Button, Typography, List, message } from "antd";
 import { CopyOutlined, ClearOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 
 const { Option } = Select;
 const { TextArea } = Input;
 const { Title } = Typography;
 
 function App() {
-  const [baseUrl, setBaseUrl] = useState("");
-  const [folderName, setFolderName] = useState("");
-  const [option, setOption] = useState("");
+  const currentMonthYear = dayjs().format("MMMMYY").toLowerCase();
+  const [baseUrl, setBaseUrl] = useState("https://techtree.biz/");
+  const [folderName, setFolderName] = useState(currentMonthYear);
+  const [option, setOption] = useState("TT");
   const [userNames, setUserNames] = useState("");
   const [generatedUrls, setGeneratedUrls] = useState([]);
 
   const urls = [
-    "https://b2bbitinfo.com/",
     "https://techtree.biz/",
+    "https://b2bbitinfo.com/",
     "https://techinfopages.com/",
   ];
 
-  const options = ["CL", "TT", "GG", "FS", "IT", "CR", "DA", "JM"];
+  const options = ["TT", "HQ", "GG", "FS", "IT", "CR", "DA", "JM", "CL"];
 
   const handleGenerateUrls = () => {
     if (baseUrl && folderName && option && userNames) {
@@ -48,9 +50,9 @@ function App() {
   };
 
   const handleClearForm = () => {
-    setBaseUrl("");
-    setFolderName("");
-    setOption("");
+    // setBaseUrl("");
+    // setFolderName(currentMonthYear);
+    // setOption("");
     setUserNames("");
     setGeneratedUrls([]);
   };
@@ -116,7 +118,7 @@ function App() {
           <List
             bordered
             dataSource={generatedUrls}
-            renderItem={(item) => <List.Item>{item}</List.Item>}
+            renderItem={(item) => <List.Item><a href={item} target="_blanck">{item}</a></List.Item>}
           />
         </div>
       </div>

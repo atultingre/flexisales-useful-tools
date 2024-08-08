@@ -4,18 +4,14 @@ import { Button, Input, notification, Radio } from "antd";
 const ListGenerator = () => {
   const [content, setContent] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
-  const [listType, setListType] = useState("ol"); // Default to "ol" for ordered list
+  const [listType, setListType] = useState("ul-bold"); // Default to bold unordered list
   const [previewHtml, setPreviewHtml] = useState("");
 
   const handleGenerateCode = () => {
     // Remove bullets and trim each line
     const cleanedContent = content
       .split(/\n+/)
-      .map((line) =>
-        line
-          .replace(/^[•o]+\s*/, "") // Remove specific bullets like •, o, 
-          .trim()
-      )
+      .map((line) => line.replace(/^[•o]+\s*/, "").trim())
       .filter((line) => line);
 
     // Check if the first line is a heading or part of the list
@@ -30,22 +26,26 @@ const ListGenerator = () => {
       : cleanedContent;
 
     // Determine list type based on selection
-    const listTag = listType === "ol" ? "ol" : "ul";
+    const isBold = listType.includes("bold");
+    const listTag = listType.includes("ol") ? "ol" : "ul";
 
     // Create HTML code with the filtered content
     const htmlCode = `
-${heading ? `<p class="mb-3 last:mb-0"><b>${heading}</b></p>` : ""}
+${heading ? `<p class="mb-3 last:mb-0">${heading}</p>` : ""}
 <${listTag} id="list">
 ${filteredContent
   .map((item) => {
-    const [boldPart, ...rest] = item.split(":");
-    return `<li><b>${boldPart.trim()}:</b> ${rest.join(":").trim()}</li>`;
+    if (isBold) {
+      const [boldPart, ...rest] = item.split(":");
+      return `<li><b>${boldPart.trim()}:</b> ${rest.join(":").trim()}</li>`;
+    }
+    return `<li>${item}</li>`;
   })
   .join("\n")}
 </${listTag}>`;
 
     setGeneratedCode(htmlCode.trim());
-    setPreviewHtml(htmlCode.trim()); // Update preview with generated code
+    setPreviewHtml(htmlCode.trim());
 
     notification.success({
       message: "Code Generated",
@@ -64,19 +64,21 @@ ${filteredContent
   const handleClear = () => {
     setContent("");
     setGeneratedCode("");
-    setPreviewHtml(""); // Clear preview
+    setPreviewHtml("");
   };
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold mb-4">HTML Code Generator</h2>
+      <h2 className="text-2xl font-semibold mb-4">HTML List Generator</h2>
       <Radio.Group
         onChange={(e) => setListType(e.target.value)}
         value={listType}
         className="mb-4"
       >
-        <Radio value="ol">Ordered List</Radio>
-        <Radio value="ul">Unordered List</Radio>
+        <Radio value="ul-bold">Unordered List Bold with :</Radio>
+        <Radio value="ul-normal">Unordered List Normal</Radio>
+        <Radio value="ol-bold">Ordered List Bold with :</Radio>
+        <Radio value="ol-normal">Ordered List Normal</Radio>
       </Radio.Group>
       <Input.TextArea
         rows={5}

@@ -14,7 +14,7 @@ import { deleteCampaign, getCampaigns } from "../../api";
 import { useNavigate } from "react-router-dom";
 import CampaignForm from "./CampaignForm";
 import { useAuth } from "../../context/AuthContext";
-import dayjs from "dayjs"; // Import dayjs for date formatting
+import dayjs from "dayjs";
 
 const { Option } = Select;
 
@@ -27,7 +27,8 @@ const Campaigns = () => {
   const [filters, setFilters] = useState({
     date: null,
     campaignType: null,
-    preparedBy: null,
+    campaignCreatedBy: null,
+    campaignAssignedTo: null,
     status: null,
   });
   const { logout, user } = useAuth();
@@ -37,7 +38,7 @@ const Campaigns = () => {
     try {
       const response = await getCampaigns();
       setCampaigns(response.data);
-      setFilteredCampaigns(response.data); // Initialize filtered campaigns
+      setFilteredCampaigns(response.data);
     } catch (error) {
       notification.error({
         message: "Campaigns fetching Failed",
@@ -51,32 +52,28 @@ const Campaigns = () => {
   }, [user]);
 
   useEffect(() => {
-    // Filter campaigns based on the searchText and filters
     let filtered = campaigns.filter((campaign) => {
       const matchesSearchText =
-        campaign.date.toLowerCase().includes(searchText.toLowerCase()) ||
-        campaign.campaignType
-          .toLowerCase()
-          .includes(searchText.toLowerCase()) ||
-        campaign.campaignCode
-          .toLowerCase()
-          .includes(searchText.toLowerCase()) ||
-        campaign.landingPages.toString().includes(searchText.toLowerCase()) ||
-        campaign.preparedBy.toLowerCase().includes(searchText.toLowerCase()) ||
-        campaign.status.toLowerCase().includes(searchText.toLowerCase());
-
+        (campaign.date && campaign.date.toLowerCase().includes(searchText.toLowerCase())) ||
+        (campaign.campaignType && campaign.campaignType.toLowerCase().includes(searchText.toLowerCase())) ||
+        (campaign.campaignCode && campaign.campaignCode.toLowerCase().includes(searchText.toLowerCase())) ||
+        (campaign.landingPages && campaign.landingPages.toString().includes(searchText.toLowerCase())) ||
+        (campaign.campaignCreatedBy && campaign.campaignCreatedBy.toLowerCase().includes(searchText.toLowerCase())) ||
+        (campaign.campaignAssignedTo && campaign.campaignAssignedTo.toLowerCase().includes(searchText.toLowerCase())) ||
+        (campaign.status && campaign.status.toLowerCase().includes(searchText.toLowerCase()));
+  
       const matchesFilters =
-        (!filters.date ||
-          dayjs(campaign.date).isSame(dayjs(filters.date), "day")) &&
-        (!filters.campaignType ||
-          campaign.campaignType === filters.campaignType) &&
-        (!filters.preparedBy || campaign.preparedBy === filters.preparedBy) &&
+        (!filters.date || dayjs(campaign.date).isSame(dayjs(filters.date), "day")) &&
+        (!filters.campaignType || campaign.campaignType === filters.campaignType) &&
+        (!filters.campaignCreatedBy || campaign.campaignCreatedBy === filters.campaignCreatedBy) &&
+        (!filters.campaignAssignedTo || campaign.campaignAssignedTo === filters.campaignAssignedTo) &&
         (!filters.status || campaign.status === filters.status);
-
+  
       return matchesSearchText && matchesFilters;
     });
     setFilteredCampaigns(filtered);
   }, [searchText, filters, campaigns]);
+  
 
   const handleDelete = async (id) => {
     try {
@@ -180,16 +177,29 @@ const Campaigns = () => {
       sorter: (a, b) => a.landingPages - b.landingPages,
     },
     {
-      title: "Prepared By",
-      dataIndex: "preparedBy",
-      key: "preparedBy",
-      sorter: (a, b) => a.preparedBy.localeCompare(b.preparedBy),
+      title: "Created By",
+      dataIndex: "campaignCreatedBy",
+      key: "campaignCreatedBy",
+      sorter: (a, b) => a.campaignCreatedBy.localeCompare(b.campaignCreatedBy),
       filters: [
         { text: "Atul Tingre", value: "Atul Tingre" },
         { text: "Nandkishor Kadam", value: "Nandkishor Kadam" },
         { text: "Avinash Mahajan", value: "Avinash Mahajan" },
       ],
-      onFilter: (value, record) => record.preparedBy === value,
+      onFilter: (value, record) => record.campaignCreatedBy === value,
+    },
+    {
+      title: "Assigned To",
+      dataIndex: "campaignAssignedTo",
+      key: "campaignAssignedTo",
+      sorter: (a, b) =>
+        a.campaignAssignedTo.localeCompare(b.campaignAssignedTo),
+      filters: [
+        { text: "Atul Tingre", value: "Atul Tingre" },
+        { text: "Nandkishor Kadam", value: "Nandkishor Kadam" },
+        { text: "Avinash Mahajan", value: "Avinash Mahajan" },
+      ],
+      onFilter: (value, record) => record.campaignAssignedTo === value,
     },
     {
       title: "Status",

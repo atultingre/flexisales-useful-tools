@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { Form, Input, Select, DatePicker, Button, notification } from "antd";
 import moment from "moment";
 import { createCampaign, updateCampaign } from "../../api";
+import { useAuth } from "../../context/AuthContext";
 
 const { Option } = Select;
 
 const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
   const [form] = Form.useForm();
+  const { user } = useAuth();
+  const name = user.name;
 
   useEffect(() => {
     if (initialValues) {
@@ -14,8 +17,13 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
         ...initialValues,
         date: moment(initialValues.date),
       });
+    } else {
+      // Set the "Created By" field to the logged-in user's name by default
+      form.setFieldsValue({
+        campaignCreatedBy: name,
+      });
     }
-  }, [initialValues, form]);
+  }, [initialValues, form, name]);
 
   const handleFinish = async (values) => {
     const campaignData = {
@@ -58,6 +66,7 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
           layout="vertical"
           className="space-y-6"
         >
+          {/* Date Field */}
           <Form.Item
             name="date"
             label="Date"
@@ -66,6 +75,8 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
           >
             <DatePicker className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </Form.Item>
+
+          {/* Campaign Type Field */}
           <Form.Item
             name="campaignType"
             label="Campaign Type"
@@ -82,6 +93,8 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
               <Option value="JM">JM</Option>
             </Select>
           </Form.Item>
+
+          {/* Campaign Code Field */}
           <Form.Item
             name="campaignCode"
             label="Campaign Code"
@@ -89,6 +102,8 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
           >
             <Input className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </Form.Item>
+
+          {/* Landing Pages Field */}
           <Form.Item
             name="landingPages"
             label="Number of Landing Pages"
@@ -99,9 +114,12 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </Form.Item>
+
+          {/* Prepared By Field */}
           <Form.Item
-            name="preparedBy"
-            label="Prepared By"
+            name="campaignCreatedBy"
+            label="Created By"
+            initialValue={name}
             rules={[{ required: true }]}
           >
             <Select className="block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -110,6 +128,21 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
               <Option value="Avinash Mahajan">Avinash Mahajan</Option>
             </Select>
           </Form.Item>
+
+          {/* Assigned To Field */}
+          <Form.Item
+            name="campaignAssignedTo"
+            label="Assigned To"
+            rules={[{ required: false }]}
+          >
+            <Select className="block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <Option value="Atul Tingre">Atul Tingre</Option>
+              <Option value="Nandkishor Kadam">Nandkishor Kadam</Option>
+              <Option value="Avinash Mahajan">Avinash Mahajan</Option>
+            </Select>
+          </Form.Item>
+
+          {/* Status Field */}
           <Form.Item name="status" label="Status" rules={[{ required: true }]}>
             <Select className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               <Option value="Not yet started">Not yet started</Option>
@@ -117,6 +150,7 @@ const CampaignForm = ({ setCampaigns, onSuccess, initialValues }) => {
               <Option value="Completed">Completed</Option>
             </Select>
           </Form.Item>
+
           <Button
             type="primary"
             htmlType="submit"

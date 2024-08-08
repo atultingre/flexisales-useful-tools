@@ -43,7 +43,7 @@ const Dashboard = ({ children }) => {
         <div className="my-5 flex justify-center items-center">
           <NavLink to={"/"}>
             <h1 className="text-xl text-black font-bold">
-              {!collapsed ? "Flexisales" : "Flexi"}
+              {!collapsed ? "Developer" : "Dev"}
             </h1>
           </NavLink>
         </div>
