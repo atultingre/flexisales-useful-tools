@@ -14,7 +14,7 @@ const Select = () => {
       .filter((config) => config.question && config.options)
       .map((config, index) => {
         const optionsArray = config.options
-          .split(/[\n,]+/)
+          .split(/[\n]+/)
           .map((option) => option.trim())
           .filter((option) => option);
 
@@ -31,7 +31,7 @@ const Select = () => {
           `<option value="${option}" title="${option}">${option}</option>`
       )
       .join("\n  ")}
-  </select>`;
+  </select> <br>`;
       })
       .join("\n\n");
 

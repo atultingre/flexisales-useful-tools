@@ -13,13 +13,13 @@ const EmailTemplateGenerator = () => {
 
     switch (templateType) {
       case "allWorking":
-        template = `Hi Team,\n\nAll Content and Abstract Links are working for ${campaignCode}\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
+        template = `Hi Team,\n\nAll Content and Abstract Links are working for ${campaignCode}.\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
         break;
       case "lpLinksAndScreenshots":
-        template = `Hi Team,\n\nPFA for Landing Page Links and Screenshots For ${campaignCode}\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
+        template = `Hi Team,\n\nPFA for Landing Page Links and Screenshots For ${campaignCode}.\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
         break;
       case "lpLinks":
-        template = `Hi Team,\n\nPlease Find Below Landing Page Links For ${campaignCode}\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
+        template = `Hi Team,\n\nPlease Find Below Landing Page Links For ${campaignCode}.\n\nBest regards,\n\nAtul Tingre\nSoftware Developer\nFlexisales Inc\nMobile: 8806234568\natul.tingre@flexisales.co.in\nwww.flexisales.com`;
         break;
       default:
         break;
@@ -35,11 +35,6 @@ const EmailTemplateGenerator = () => {
       description: "The email template has been copied to your clipboard.",
       placement: "topRight",
     });
-  };
-
-  const handleClear = () => {
-    setCampaignCode("");
-    setGeneratedTemplate("");
   };
 
   return (
@@ -62,22 +57,13 @@ const EmailTemplateGenerator = () => {
         <Radio value="lpLinksAndScreenshots">LP Links and Screenshots</Radio>
         <Radio value="lpLinks">LP Links</Radio>
       </Radio.Group>
-      <div className="flex flex-col md:flex-row gap-3">
-        <Button type="primary" onClick={handleGenerate} className="w-full mb-4">
-          Generate Template
-        </Button>
-        <Button
-          type="primary"
-          danger
-          onClick={handleClear}
-          className="w-full mb-4"
-        >
-          Clear
-        </Button>
-      </div>
+
+      <Button type="primary" onClick={handleGenerate} className="w-full mb-4">
+        Generate Template
+      </Button>
 
       {generatedTemplate && (
-        <div className="mt-4 p-4 border rounded bg-gray-100 w-full">
+        <div className="mt-4 p-4 border rounded bg-gray-100">
           <div className="w-full flex justify-end ">
             <Button
               type="default"

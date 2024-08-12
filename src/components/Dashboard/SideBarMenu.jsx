@@ -3,13 +3,16 @@ import { Menu } from "antd";
 import React from "react";
 import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
 import { HiTemplate } from "react-icons/hi";
-import { MdOutlineCampaign, MdOutlineRadioButtonChecked } from "react-icons/md";
+import {
+  MdEmail,
+  MdOutlineCampaign,
+  MdOutlineRadioButtonChecked,
+} from "react-icons/md";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const SideBarMenu = () => {
-  const { collapsed, colorBgContainer, setCollapsed, borderRadiusLG } =
-    useAuth();
+  const { collapsed } = useAuth();
 
   const location = useLocation();
   const currentPath = location.pathname;
@@ -20,7 +23,7 @@ const SideBarMenu = () => {
     { key: "/select", icon: <FaQuestion />, label: "CQ Questions" },
     { key: "/list", icon: <FaListUl />, label: "List" },
     { key: "/url-generator", icon: <FaLink />, label: "Url Generator" },
-    { key: "/email-template", icon: <MdOutlineRadioButtonChecked />, label: "Email Template" },
+    { key: "/email-template", icon: <MdEmail />, label: "Email Template" },
     { key: "/radio", icon: <MdOutlineRadioButtonChecked />, label: "Radio" },
     { key: "/checkbox", icon: <CheckOutlined />, label: "Checkbox" },
   ];
