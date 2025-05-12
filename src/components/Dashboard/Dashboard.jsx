@@ -1,10 +1,9 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout } from "antd";
+import { Layout } from "antd";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import SideBar from "./SideBar";
 import MobileSideBar from "./MobileSideBar";
+import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 
 const { Header, Sider, Content } = Layout;

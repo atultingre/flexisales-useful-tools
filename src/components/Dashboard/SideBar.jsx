@@ -1,8 +1,8 @@
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import { useAuth } from "../../context/AuthContext";
 
-import SideBarMenu from "./SideBarMenu";
 import { NavLink } from "react-router-dom";
+import SideBarMenu from "./SideBarMenu";
 
 const { Sider } = Layout;
 
@@ -27,7 +27,7 @@ const SideBar = () => {
         <div className="my-5 flex justify-center items-center">
           <NavLink to="/">
             <h1 className="text-xl text-black font-bold">
-              {collapsed ? "Dev" : "Developer"}
+              {collapsed ? "Dev" : "Developers Tool"}
             </h1>
           </NavLink>
         </div>

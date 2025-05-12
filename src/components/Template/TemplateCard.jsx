@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Card, Input, Button, notification, Modal } from "antd";
 import { CopyOutlined, EyeOutlined } from "@ant-design/icons";
+import { Button, Card, Input, Modal, notification } from "antd";
+import React, { useState } from "react";
 import templates from "./templates.json";
 
 const TemplateCard = () => {
@@ -12,14 +12,58 @@ const TemplateCard = () => {
     template.campaignName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // const handleCopy = async (filePath) => {
+  //   try {
+  //     const response = await fetch(filePath);
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const fileContent = await response.text();
+  //     await navigator.clipboard.writeText(fileContent);
+  //     notification.success({
+  //       message: "Copied!",
+  //       description: "The content has been copied to your clipboard.",
+  //       placement: "topRight",
+  //     });
+  //   } catch (error) {
+  //     notification.error({
+  //       message: "Copy Failed",
+  //       description: "There was an issue copying the content.",
+  //       placement: "topRight",
+  //     });
+  //     console.error("Error copying file content:", error);
+  //   }
+  // };
+
+  const fallbackCopyTextToClipboard = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed"; // Prevent scrolling to bottom
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      console.error("Fallback: Copy command failed", err);
+    }
+
+    document.body.removeChild(textArea);
+  };
+
   const handleCopy = async (filePath) => {
     try {
       const response = await fetch(filePath);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      if (!response.ok) throw new Error("Network response was not ok");
       const fileContent = await response.text();
-      await navigator.clipboard.writeText(fileContent);
+
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(fileContent);
+      } else {
+        fallbackCopyTextToClipboard(fileContent);
+      }
+
       notification.success({
         message: "Copied!",
         description: "The content has been copied to your clipboard.",
@@ -51,16 +95,16 @@ const TemplateCard = () => {
           <h2 className="text-2xl font-semibold mb-4">Templates</h2>
         </div>
         <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
+          {/* <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">b2b.com</h2>
-            <span className="text-gray-600">JM, DA, CT, AU, GG</span>
-          </div>
+          </div> */}
           <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">techtree.com</h2>
             <span className="text-gray-600">IT, TT, HQ, CR, TD, FS</span>
           </div>
           <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">techinfopages.com</h2>
+            <span className="text-gray-600">JM, DA, CT, AU, GG</span>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ const ListGenerator = () => {
 
     // Determine list type based on selection
     const isBold = listType.includes("bold");
-    const listTag = listType.includes("ol") ? "ol" : "ul";
+    const listTag = listType.includes("ul") ? "ul" : "ol";
 
     // Create HTML code with the filtered content
     const htmlCode = `
@@ -95,7 +95,11 @@ ${filteredContent
         <Button type="primary" className="w-full" onClick={handleGenerateCode}>
           Generate Code
         </Button>
-        <Button type="primary" className="w-full" onClick={handleCopyToClipboard}>
+        <Button
+          type="primary"
+          className="w-full"
+          onClick={handleCopyToClipboard}
+        >
           Copy to Clipboard
         </Button>
         <Button type="dashed" className="w-full" danger onClick={handleClear}>
