@@ -23,7 +23,8 @@ const SideBarMenu = () => {
     { key: "/email-template", icon: <MdEmail />, label: "Email Template" },
     { key: "/radio", icon: <MdOutlineRadioButtonChecked />, label: "Radio" },
     { key: "/checkbox", icon: <CheckOutlined />, label: "Checkbox" },
-    { key: "/template", icon: <HiTemplate />, label: "Campaign Template" },
+    { key: "/html-generator", icon: <HiTemplate />, label: "HTML Generator" },
+    // { key: "/template", icon: <HiTemplate />, label: "Campaign Template" },
     // { key: "/campaigns", icon: <MdOutlineCampaign />, label: "Campaigns" },
   ];
 
@@ -50,7 +51,7 @@ const SideBarMenu = () => {
           </Menu.Item>
         ))}
       </Menu>
-      <NavLink
+      {/* <NavLink
         to="https://atultingre.github.io"
         target="_blank"
         className={"hidden md:block"}
@@ -65,7 +66,6 @@ const SideBarMenu = () => {
           >
             <img
               src="./Atul.jpg"
-              // src="https://media.licdn.com/dms/image/v2/D5603AQH0W9ZFZvIMQA/profile-displayphoto-shrink_400_400/B56ZOtSD5vG4Ag-/0/1733779016425?e=1743033600&v=beta&t=Skqnmei8ZjpBD5H1gJRN6VbxL92Ts-q_VRdNRzHxvyM"
               alt="logo"
               width={collapsed ? 50 : 40}
               className="rounded-full"
@@ -78,7 +78,7 @@ const SideBarMenu = () => {
             )}
           </div>
         </div>
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 };

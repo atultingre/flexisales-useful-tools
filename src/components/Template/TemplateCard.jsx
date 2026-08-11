@@ -100,7 +100,7 @@ const TemplateCard = () => {
           </div> */}
           <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">techtree.com</h2>
-            <span className="text-gray-600">IT, TT, HQ, CR, TD, FS</span>
+            <span className="text-gray-600">IT, TT, HQ, CR, SC, TD, FS</span>
           </div>
           <div className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold">techinfopages.com</h2>

@@ -16,8 +16,8 @@ const { Option } = Select;
 const { Title } = Typography;
 
 const UrlGenerator = () => {
-  const [domain, setDomain] = useState("https://techtree.biz/");
-  const [campaign, setCampaign] = useState("hq");
+  const [domain, setDomain] = useState("https://techinfopages.com/");
+  const [campaign, setCampaign] = useState("gg");
   const [folderNames, setFolderNames] = useState("");
   const [resourceIds, setResourceIds] = useState("");
   const [generatedLinks, setGeneratedLinks] = useState([]);
@@ -37,6 +37,7 @@ const UrlGenerator = () => {
     "cr",
     "td",
     "da",
+    "sc",
   ];
 
   const sanitizeResourceId = (id) => {
