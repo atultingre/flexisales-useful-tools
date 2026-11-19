@@ -8,6 +8,7 @@ import Select from "./components/Select/Select";
 import UrlGenerator from "./components/UrlGenerator/UrlGenerator";
 import HtmlGenerator from "./components/HtmlGenerator/HtmlGenerator";
 import { Toaster } from "react-hot-toast";
+import Tracker from "./components/InterviewPrepTracker/Tracker";
 // import TemplateCard from "./components/Template/TemplateCard";
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/list" element={<ListGenerator />} />
         <Route path="/email-template" element={<EmailTemplateGenerator />} />
         <Route path="/html-generator" element={<HtmlGenerator />} />
+        <Route path="/tracker" element={<Tracker />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         {/* <Route path="/template" element={<TemplateCard />} /> */}
       </Routes>

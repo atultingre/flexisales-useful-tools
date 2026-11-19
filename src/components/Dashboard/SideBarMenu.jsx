@@ -3,10 +3,7 @@ import { Menu } from "antd";
 import React from "react";
 import { FaLink, FaListUl, FaQuestion } from "react-icons/fa";
 import { HiTemplate } from "react-icons/hi";
-import {
-  MdEmail,
-  MdOutlineRadioButtonChecked
-} from "react-icons/md";
+import { MdEmail, MdOutlineRadioButtonChecked } from "react-icons/md";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
@@ -24,6 +21,7 @@ const SideBarMenu = () => {
     { key: "/radio", icon: <MdOutlineRadioButtonChecked />, label: "Radio" },
     { key: "/checkbox", icon: <CheckOutlined />, label: "Checkbox" },
     { key: "/html-generator", icon: <HiTemplate />, label: "HTML Generator" },
+    { key: "/tracker", icon: <HiTemplate />, label: "Interview Tracker" },
     // { key: "/template", icon: <HiTemplate />, label: "Campaign Template" },
     // { key: "/campaigns", icon: <MdOutlineCampaign />, label: "Campaigns" },
   ];
